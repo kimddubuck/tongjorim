@@ -239,6 +239,106 @@
   .kab button{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 4px;font-family:inherit;font-size:13px;font-weight:800;color:var(--muted);cursor:pointer;white-space:nowrap;}
   .kab button.on{background:var(--navy);color:#fff;border-color:var(--navy);}
   .h1s{display:block;font-size:clamp(15px,4.2vw,19px);font-weight:800;color:var(--muted);letter-spacing:-.2px;margin-bottom:4px;}
+  .sim{margin-top:16px;background:#F7F9F8;border-radius:16px;padding:15px 13px;}
+  .simh{font-size:15.5px;font-weight:900;}
+  .simd{font-size:12.5px;color:var(--muted);margin:4px 0 12px;line-height:1.65;}
+  .simd b{color:var(--ink);}
+  .simc{display:grid;gap:6px;margin-bottom:14px;}
+  .siml{font-size:11.5px;font-weight:800;color:var(--muted);margin-top:4px;}
+  .segs{display:flex;gap:5px;flex-wrap:wrap;}
+  .segs button{flex:1;min-width:0;border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:8px 2px;font-family:inherit;font-size:12.5px;font-weight:800;color:var(--muted);cursor:pointer;white-space:nowrap;}
+  .segs button.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .simrow{background:#fff;border-radius:12px;padding:10px 10px 6px;margin-bottom:8px;}
+  .simt{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:4px;}
+  .simt b{margin-left:auto;font-size:15px;}
+  .simt b.neg{color:var(--red);} .simt b.pos{color:var(--green-ink);}
+  .abt.g{background:var(--gold);}
+  .sbars{position:relative;height:110px;display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
+  .sbars .kzero{background:var(--ink);}
+  .sbars .kbar{left:10%;right:10%;border-radius:6px;}
+  .sbars .kval{font-size:12px;}
+  .sblab{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:0 10px;}
+  .sblab div{text-align:center;font-size:11px;color:var(--muted);font-weight:700;}
+  .simv{margin-top:10px;font-size:13px;line-height:1.65;background:var(--green-soft);color:var(--green-ink);border-radius:10px;padding:10px 12px;}
+  .simv.warn{background:var(--red-soft);color:#9a2e1e;}
+  .simv b{font-weight:900;}
+  .sumt{margin-top:14px;}
+  .sumt th{line-height:1.35;}
+  .sumt td:first-child{font-weight:800;color:var(--ink);}
+  .sumt td.bal.neg{color:var(--red);}
+  .sumt tr:last-child td.bal{font-weight:800;}
+  .heart{background:linear-gradient(160deg,#FFF6E3,#FBEFD3);border-radius:18px;padding:13px 14px 12px;margin-bottom:12px;border:1px solid #F0DDAE;box-shadow:var(--shadow);}
+  .heart .hh{font-size:14.5px;font-weight:900;color:#6b4e12;margin-bottom:3px;}
+  .heart .hp{margin:0 0 8px;font-size:14px;color:#5a4410;line-height:1.6;}
+  .heart .hp b{color:#3a2905;}
+  .heart .hl{display:flex;gap:9px;align-items:center;background:rgba(255,255,255,.7);border-radius:10px;padding:6px 10px;margin-bottom:5px;}
+  .heart .hl span{font-size:18px;line-height:1;}
+  .heart .hl b{display:block;font-size:13.5px;color:#3a2905;line-height:1.4;}
+  .heart .hl small{display:inline;font-size:12px;color:#7a5c1a;margin-right:6px;}
+  .heart .hl em{display:inline-block;font-style:normal;font-size:11.5px;font-weight:800;color:var(--green-ink);background:var(--green-soft);padding:0 7px;border-radius:6px;white-space:nowrap;}
+  .heart .hend{margin:8px 0 0;text-align:center;font-size:15px;font-weight:700;color:#5a4410;}
+  .heart .hend b{color:var(--green-ink);font-weight:900;}
+  /* 경계선·여백 정리 */
+  .card,.overview,.kchart,.kgrp,.ktab,.ch,.rm,.kres,.kbank{border:1px solid #E1E8E5;}
+  .card{padding:16px 15px;margin-bottom:12px;box-shadow:0 4px 14px -10px rgba(22,48,61,.25);}
+  .overview{margin-bottom:12px;padding:13px 16px;border-color:transparent;}
+  .head{margin-bottom:10px;}
+  .why{margin-top:10px;}
+  .rulebox{margin-top:10px;}
+  .formula{margin-top:12px;}
+  .tabs{padding:6px 0 10px;}
+  .lede{margin-bottom:12px;}
+  .kres{padding:14px;border-color:transparent;}
+  .krv{font-size:44px;}
+  .kbank{background:#fff;border-radius:16px;margin-top:10px;overflow:hidden;}
+  .kbr{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid var(--line);font-size:13.5px;font-weight:700;}
+  .kbr:last-child{border-bottom:none;}
+  .kbr small{font-size:11px;color:var(--faint);font-weight:600;margin-left:4px;}
+  .kbr b{font-size:17px;color:var(--navy);}
+  .kbr.m b{color:var(--red);} .kbr.p b{color:var(--green-ink);}
+  .kbr.end{background:var(--navy-soft);}
+  .kbr.end span{font-weight:900;}
+  .kbr.end b{font-size:22px;color:var(--green-ink);}
+  .kbr.end b.neg{color:var(--red);}
+  .kchart{margin-top:10px;padding:12px 12px 8px;box-shadow:none;}
+  .kcl{font-size:12.5px;font-weight:800;color:var(--muted);margin-bottom:6px;}
+  .kgrp{background:#fff;border-radius:14px;padding:11px 12px;margin-top:10px;}
+  .kgl{font-size:13px;font-weight:900;color:var(--navy);margin-bottom:8px;}
+  .kgl small{font-size:11px;color:var(--faint);font-weight:600;margin-left:4px;}
+  .kgrp .kab{margin-bottom:0;}
+  .kgrp .kpre{margin:0 0 8px;}
+  .kq{box-shadow:none;border:1px solid var(--line);padding:9px 11px;}
+  .kq input{margin:4px 0 2px;}
+  .kgrp.kev{margin-top:10px;box-shadow:none;}
+  .kplay{margin-top:10px;}
+  .ktab{box-shadow:none;margin-top:10px;}
+  .sim{padding:13px 12px;border:1px solid #E1E8E5;}
+  .simrow{border:1px solid var(--line);}
+  .abc{padding:12px;}
+  .sec{margin:20px 0 10px;}
+  .simtip{font-size:12px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:9px;padding:7px 10px;margin-top:4px;line-height:1.55;}
+  .simtip b{color:var(--ink);}
+  #simD button{font-size:12px;}
+  .sumt tr.real td{background:var(--gold-soft);}
+  .sumt td small{display:block;font-size:10.5px;color:var(--gold-ink);font-weight:800;}
+  .reason{margin-top:12px;border:1.5px solid #F0DDAE;background:#FFF9EC;border-radius:14px;padding:12px 13px;display:grid;gap:6px;}
+  .rh2{font-size:14.5px;font-weight:900;color:#6b4e12;}
+  .rr2{font-size:13px;color:#5a4410;line-height:1.6;}
+  .rr2 b{color:#3a2905;}
+  .simh small{font-size:11.5px;color:var(--faint);font-weight:700;margin-left:4px;}
+  .sbars.s20{grid-template-columns:repeat(21,1fr);gap:2px;height:150px;}
+  .sbars.s20 .kbar{left:5%;right:5%;border-radius:3px;}
+  .sbars.s20 .kval{font-size:11px;white-space:nowrap;left:-12px;right:-12px;}
+  .s20l{display:grid;grid-template-columns:1fr 5fr 5fr 5fr 5fr;padding:0;}
+  .s20l div{text-align:right;} .s20l div:first-child{text-align:left;}
+  #s20t td small{display:block;font-size:10.5px;color:var(--faint);font-weight:700;}
+  .sumt th small{font-size:10px;color:var(--faint);font-weight:700;}
+  #s20t td.wc{color:var(--gold-ink);}
+  #s20t td.wc.neg{color:var(--red);}
+  .rel2{margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 12px;display:grid;gap:6px;}
+  .rlh{font-size:13.5px;font-weight:900;color:var(--navy);}
+  .rli{font-size:12.5px;color:var(--muted);line-height:1.6;}
+  .rli b{color:var(--ink);}
   .crow{margin-bottom:16px;}
   .qs{grid-column:1 / 4;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:2px;}
   .qc{background:#F7F9F8;border-radius:8px;padding:6px 4px;text-align:center;}
@@ -301,7 +401,16 @@
 <div class="wrap">
 
   <h1><span class="h1s">부산교통공사 공사11기 통조림 동기모임</span>2026년 개선안건</h1>
-  <p class="lede">아래 <b>3가지</b>를 카톡 투표로 정해요. 읽어보고 단톡방 투표에 참여해주세요.</p>
+  <p class="lede">아래 <b>4가지</b>를 카톡 투표로 정해요. 읽어보고 단톡방 투표에 참여해주세요.</p>
+
+  <div class="heart">
+    <div class="hh">💌 이번 개선안에 담은 마음</div>
+    <p class="hp">통장에 차곡차곡 <b>쌓이기만 하던 돈</b>, 이제 우리에게 돌려주려고 해요.</p>
+    <div class="hl"><span>🎂</span><div><b>바빠서 못 오는 친구에게도</b><small>생일만큼은 더 따뜻하게 챙길게요</small><em>생일비 3만 → 5만원</em></div></div>
+    <div class="hl"><span>🍻</span><div><b>시간 내서 와주는 친구에게는</b><small>모임 지원을 넉넉하게</small><em>최소 20만원 · 10명 초과시 1인당 2만원</em></div></div>
+    <div class="hl"><span>💸</span><div><b>그리고 우리 모두에게</b><small>그동안 함께 모은 돈을 나눠요</small><em>쌓인 회비 환급</em></div></div>
+    <p class="hend">오든 못 오든, 우리는 <b>19명 모두 동기</b>니까.</p>
+  </div>
 
   <div class="tabs" role="tablist">
     <button class="tab on" data-tab="agenda" role="tab">🗳️ 투표 안건</button>
@@ -313,46 +422,26 @@
   <div class="overview">
     <div class="t">투표 안건</div>
     <ol>
-      <li><span class="n">1</span>생일비 · 환급: A안 vs B안</li>
+      <li><span class="n">1</span>생일비 3만원 → 5만원</li>
       <li><span class="n">2</span>분기모임 지원금 인상</li>
       <li><span class="n">3</span>생일비, 생일 때 vs 연말에</li>
+      <li><span class="n">4</span>쌓인 회비 1인당 10만원 환급</li>
     </ol>
   </div>
 
   <!-- 1 -->
   <section class="card">
-    <div class="head"><div class="n">1</div><h2>생일비 · 쌓인 회비 환급</h2></div>
-    <a class="law" data-go="r-6-1-4">📖 제6장 제1조 4항 · 제7장 제1조 ›</a>
-    <div class="why" style="margin-top:0"><span class="ic">🗳️</span><span>통장에 쌓인 돈(<b>426만</b>, 10/29 기준)을 어떻게 쓸지 <b>둘 중 하나</b>를 골라요.</span></div>
-
-    <div class="abx">
-      <div class="abc a">
-        <div class="abh"><span class="abt">A안</span>생일 더 챙기기</div>
-        <div class="abr"><span>생일비</span><b>3만 → 5만원</b></div>
-        <div class="abr"><span>환급</span><b>1인당 10만원</b><small>19명 × 10만 = 190만</small></div>
-        <div class="abr"><span>환급 후 통장</span><b>236만</b><small>4,256,193 − 1,900,000<br>= 2,356,193원</small></div>
-        <div class="abr"><span>연간 잉여금</span><b>133만</b><small>회비 228만 − 생일비 95만(19명×5만)</small></div>
-        <div class="abr hl"><span>분기 모임</span><b>평균 16명까지 흑자</b></div>
-        <ul class="abp"><li class="g">못 오는 친구도 생일은 확실히 챙김</li><li class="g">비상금이 넉넉하게 남음</li><li class="b">지금 돌려받는 돈은 적음</li></ul>
-      </div>
-      <div class="abc b">
-        <div class="abh"><span class="abt">B안</span>지금 많이 돌려받기</div>
-        <div class="abr"><span>생일비</span><b>3만원 유지</b></div>
-        <div class="abr"><span>환급</span><b>1인당 20만원</b><small>19명 × 20만 = 380만</small></div>
-        <div class="abr"><span>환급 후 통장</span><b>46만</b><small>4,256,193 − 3,800,000<br>= 456,193원</small></div>
-        <div class="abr"><span>연간 잉여금</span><b>171만</b><small>회비 228만 − 생일비 57만(19명×3만)</small></div>
-        <div class="abr hl"><span>분기 모임</span><b>전원 와도 +19만 흑자</b></div>
-        <ul class="abp"><li class="g">지금 바로 20만원씩 돌려받음</li><li class="g">매년 모임비 여유가 큼</li><li class="b">비상금이 46만으로 줄어듦</li></ul>
-      </div>
+    <div class="head"><div class="n">1</div><h2>생일비 인상</h2></div>
+    <a class="law" data-go="r-6-1-4">📖 회칙 제6장 제1조 4항 개정 ›</a>
+    <div class="change">
+      <div class="box before"><div class="k">지금</div><div class="v num">3만원</div></div>
+      <div class="arrow">→</div>
+      <div class="box after"><div class="k">바꾸면</div><div class="v num">5만원</div></div>
     </div>
-
+    <div class="why"><span class="ic">💡</span><span>모임에 못 나오는 친구도 <b>생일만큼은 제대로 챙기자.</b> 참석 여부와 상관없이 1년에 한 번 모두가 받는 혜택.</span></div>
     <div class="rulebox"><div class="rbh">📖 회칙 제6장 제1조 제4항 [생일]<a class="rbl" data-go="r-6-1-4">전문 보기 ›</a></div>
       <div class="rbr cur"><span>현행</span>현금 <b>3만원</b> 또는 3만원 상당의 선물</div>
-      <div class="rbr new"><span>A안</span>현금 <b>5만원</b> 또는 5만원 상당의 선물로 개정</div>
-      <div class="rbr new"><span>B안</span>현행 <b>그대로 유지</b></div></div>
-    <div class="rulebox"><div class="rbh">📖 회칙 제7장 제1조 [논의]<a class="rbl" data-go="r-7-1">전문 보기 ›</a></div>
-      <div class="rbr cur"><span>현행</span>잉여금 환급 <b>규정 없음</b></div>
-      <div class="rbr new"><span>처리</span>회칙 개정 없이 <b>이번 1회만 환급</b>. 회칙에 없는 사항이라 전체 투표로 결정</div></div>
+      <div class="rbr new"><span>개정안</span>현금 <b>5만원</b> 또는 5만원 상당의 선물</div></div>
   </section>
 
   <!-- 2 -->
@@ -364,7 +453,7 @@
       <div class="arrow">→</div>
       <div class="box after"><div class="k">바꾸면</div><div class="v num small">최소 20만원<br>10명 초과시<br>1인당 2만원</div><div class="s">5명 → 20만원<br>15명 → 30만원</div></div>
     </div>
-    <div class="why"><span class="ic">💡</span><span>적게 모여도 <b>20만원은 보장</b>, 많이 모이면 <b>더 지원.</b> 참석할수록 이득인 구조.</span></div>
+    <div class="why"><span class="ic">💡</span><span>적게 모여도 <b>20만원은 보장</b>돼서 <b>모임 열 의욕이 생기고</b>, 많이 모이면 <b>더 지원.</b> 참석할수록 이득인 구조.</span></div>
     <div class="rulebox"><div class="rbh">📖 회칙 제5장 제3조 [모임비 지원]<a class="rbl" data-go="r-5-3">전문 보기 ›</a></div>
       <div class="rbr cur"><span>현행</span>모임 참가자 <b>1인당 1만원</b>씩 지원한다.</div>
       <div class="rbr new"><span>개정안</span>모임마다 <b>최소 20만원</b>을 지원하고, 참가자가 10명을 넘으면 <b>1인당 2만원</b>씩 지원한다.</div></div>
@@ -383,11 +472,11 @@
         <div class="ln">133만 ÷ 4분기 = <b>분기당 약 33만원</b></div>
         <div class="ln">33만 ÷ 2만원 = <b>평균 16명까지 흑자</b></div>
         <div class="ln sub">전원 와도 19명 × 2만 × 4번 = 152만<br>133만 − 152만 = <b>−19만</b> → 쌓인 회비로 감당</div>
-        <div class="ln sub">※ 위 계산은 <b>A안(생일비 5만)</b> 기준.<br><b>B안(생일비 3만)</b>이면 228 − 57 = 171만 → 전원 와도 <b>+19만</b></div>
+        <div class="ln sub">※ 위 계산은 생일비 <b>5만원(안건 1 통과)</b> 기준.<br>생일비가 3만원 그대로면 228 − 57 = 171만 → 전원 와도 <b>+19만</b></div>
       </div>
     </div>
     <div class="chart">
-      <div class="ct">📊 매 분기 몇 명 오느냐에 따라 1년 뒤 남는 돈 (A안 기준)</div>
+      <div class="ct">📊 매 분기 몇 명 오느냐에 따라 1년 뒤 남는 돈 (생일비 5만 기준)</div>
       <div class="ctip">모임 쓸 돈 <b>133만</b>에서 분기마다 지원금이 빠져나가요.<br><b>카드를 누르면</b> 분기별 계산표가 펼쳐져요.</div>
       <div id="chart"></div>
     </div>
@@ -420,6 +509,52 @@
       <div class="rbr new"><span>추가안</span>① <b>생일이 있는 달</b>에 지급<br>② <b>12월 연말모임</b>(제5장 제4조)에 일괄 지급</div></div>
   </section>
 
+  <!-- 4 -->
+  <section class="card">
+    <div class="head"><div class="n">4</div><h2>쌓인 회비 1인당 10만원 환급</h2></div>
+    <a class="law" data-go="r-7-1">📖 회칙에 없는 사항 → 제7장 제1조로 결정 ›</a>
+    <div class="flow">
+      <div class="fr"><span class="ic">🏦</span><span class="ft">지금 통장<small>3,956,193원 (10/29 기준)</small></span><span class="fv num">396만</span></div>
+      <div class="fr minus"><span class="ic">🍻</span><span class="ft">12월 4분기 모임비 (현행 규칙)<small>아직 개정 전 → 1인당 1만원 × 최대 19명</small></span><span class="fv num">−19만</span></div>
+      <div class="fr minus"><span class="ic">💸</span><span class="ft">환급 10만원 × 19명<small>이번 1회</small></span><span class="fv num">−190만</span></div>
+      <div class="fr keep"><span class="ic">🛟</span><span class="ft">경조사 여윳돈으로 남김<small>3,956,193 − 190,000 − 1,900,000 = 1,866,193원</small></span><span class="fv num">187만</span></div>
+    </div>
+
+    <div class="reason">
+      <div class="rh2">🤔 왜 15만원이 아니라 10만원?</div>
+      <div class="rr2"><b>경조사비 여윳돈</b>을 남겨두기 위해서예요.</div>
+      <div class="rr2">결혼·부모님 조사는 <b>건당 30만원</b>이고 언제 생길지 몰라요.<br>187만원이면 <b>약 6건</b>을 바로 낼 수 있어요. (15만원 환급이면 92만원 → 3건)</div>
+      <div class="rr2">우리가 30대라 지금은 조사가 드물지만, <b>부모님 연세가 들수록 늘어나요.</b> 아래 20년 시뮬레이션에서 확인해보세요.</div>
+    </div>
+
+    <div class="sim">
+      <div class="simh">🔮 20년 시뮬레이션 <small>10만원 환급 기준</small></div>
+      <div class="simd">· 시작: 환급 후 <b>187만</b> · 생일비 5만 · 지원금 개정안<br>· 결혼 지원 <b>5건</b> (앞으로 5년간 1년에 1건, 건당 30만)<br>· 부모님 조사: 통계청 생명표(2024)로 계산한 <b>예상 건수</b> × 30만<br>&nbsp;&nbsp;(지금 아버님 60대 중반, 어머님 60대 초반으로 가정)</div>
+      <div class="simc">
+        <div class="siml">분기 평균 참석</div>
+        <div class="segs" id="s20N"><button data-v="10">10명 이하</button><button data-v="13" class="on">13명</button><button data-v="16">16명</button><button data-v="19">19명</button></div>
+      </div>
+      <div class="simrow"><div class="simt"><span class="abt">통장 잔액</span><b class="num" id="s20E"></b></div><div class="sbars s20" id="s20b"></div>
+        <div class="sblab s20l"><div>지금</div><div>5년</div><div>10년</div><div>15년</div><div>20년</div></div></div>
+      <table class="tb sumt">
+        <thead><tr><th>시점</th><th>부모님 조사 (누적)<br><small>예상 · 범위</small></th><th>통장<br><small>예상</small></th><th>통장<br><small>많이 생기면</small></th></tr></thead>
+        <tbody id="s20t"></tbody>
+      </table>
+      <div class="rel2">
+        <div class="rlh">📏 이 숫자, 얼마나 믿을 만해?</div>
+        <div class="rli">✅ 우리나라 전체 통계(통계청 생명표)라 <b>평균적인 감</b>을 잡기엔 충분해요. 부모님이 36분이라 전체 건수는 평균에 가깝게 나와요.</div>
+        <div class="rli">⚠️ 다만 몇 건이 생길지 <b>정확히 맞히는 건 아니에요.</b> 그래서 <b>범위</b>(10번 중 9번은 이 안에 들어옴)를 같이 보여줘요.</div>
+        <div class="rli">📉 실제 수명은 해마다 늘고 있어서, 이 계산보다 <b>조금 적게 생길 가능성</b>이 높아요. (조심스럽게 잡은 계산)</div>
+        <div class="rli">🛟 범위의 <b>많은 쪽</b>이 와도 10만원 환급이면 통장이 버텨요. 이게 10만원으로 정한 이유예요.</div>
+      </div>
+      <div class="simv" id="s20V"></div>
+    </div>
+
+    <div class="rulebox"><div class="rbh">📖 회칙 제7장 제1조 [논의]<a class="rbl" data-go="r-7-1">전문 보기 ›</a></div>
+      <div class="rbr cur"><span>현행</span>잉여금 환급 <b>규정 없음</b></div>
+      <div class="rbr new"><span>처리</span>회칙 개정 없이 <b>이번 1회 1인당 10만원 환급</b></div></div>
+  </section>
+
   <!-- kakao -->
   <div class="kakao">
     <div class="kt">💬 최종 투표는 카톡으로!</div>
@@ -427,17 +562,18 @@
     <div class="q" id="pollText">[통조림 동기모임 2026년 개선안건 투표]
 ※ 회칙 제7장 제1조: 19명 중 10명 이상 찬성 시 통과
 
-1️⃣ 생일비 · 쌓인 회비 환급 (하나만 선택)
-   A안: 생일비 5만원 인상 + 1인당 10만원 환급
-   B안: 생일비 3만원 유지 + 1인당 20만원 환급
-   현행 유지
+1️⃣ 생일비 3만원 → 5만원 인상
+   찬성 / 반대
 
 2️⃣ 분기모임 지원금 인상
    (최소 20만원, 10명 초과시 1인당 2만원)
    찬성 / 반대
 
 3️⃣ 생일비 지급 시기
-   생일 달에 바로 / 연말에 한 번에</div>
+   생일 달에 바로 / 연말에 한 번에
+
+4️⃣ 쌓인 회비 1인당 10만원 환급 (이번 1회)
+   찬성 / 반대</div>
     <button class="kbtn" id="copyBtn">투표 문구 복사하기</button>
   </div>
 
@@ -449,11 +585,9 @@
 
     <div class="rmap">
       <div class="rm">
-        <div class="rmh"><span class="rn">1</span>생일비 · 환급 A/B안<a class="rgo" data-go="r-6-1-4">제6장 제1조 4항</a></div>
-        <div class="rcmp"><div class="ro"><span>지금</span>생일비 현금 <b>3만원</b> · 잉여금 환급 규정 없음</div>
-        <div class="rnw"><span>A안</span>생일비 <b>5만원</b>으로 개정 + 이번에 <b>1인당 10만원</b> 환급</div>
-        <div class="rnw"><span>B안</span>생일비 <b>3만원 유지</b> + 이번에 <b>1인당 20만원</b> 환급</div>
-        <div class="rtx" style="font-size:12.5px;color:var(--muted)">환급은 회칙에 없는 사항 → 제7장 제1조에 따라 투표로 1회 집행</div></div>
+        <div class="rmh"><span class="rn">1</span>생일비 인상<a class="rgo" data-go="r-6-1-4">제6장 제1조 4항</a></div>
+        <div class="rcmp"><div class="ro"><span>지금</span>현금 <b>3만원</b> 또는 3만원 상당의 선물</div>
+        <div class="rnw"><span>바뀌면</span>현금 <b>5만원</b> 또는 5만원 상당의 선물</div></div>
       </div>
       <div class="rm">
         <div class="rmh"><span class="rn">2</span>분기모임 지원금 인상<a class="rgo" data-go="r-5-3">제5장 제3조</a></div>
@@ -464,6 +598,11 @@
         <div class="rmh"><span class="rn">3</span>생일비 지급 시기<a class="rgo" data-go="r-6-1-4">제6장 제1조 4항</a></div>
         <div class="rcmp"><div class="ro"><span>지금</span>지급 시기 <b>규정 없음</b></div>
         <div class="rnw"><span>추가</span>① <b>생일이 있는 달</b>에 지급 &nbsp;또는&nbsp; ② <b>12월 연말모임</b>에 일괄 지급 (제5장 제4조와 연계)</div></div>
+      </div>
+      <div class="rm">
+        <div class="rmh"><span class="rn">4</span>쌓인 회비 환급<a class="rgo" data-go="r-7-1">제7장 제1조</a></div>
+        <div class="rcmp"><div class="ro"><span>지금</span>잉여금 환급 <b>규정 없음</b></div>
+        <div class="rnw"><span>처리</span>회칙 개정 없이 <b>이번 1회 1인당 10만원</b> 환급 (남는 돈은 경조사 여윳돈)</div></div>
       </div>
       <div class="rm vote">
         <div class="rmh"><span class="rn">✔</span>통과 기준<a class="rgo" data-go="r-7-1">제7장 제1조</a></div>
@@ -522,7 +661,7 @@
     </div>
 
     <div class="ch"><div class="cht">제7장 기타</div>
-      <div class="ar hit" id="r-7-1"><span class="tagx">통과 기준 · 안건 1 환급</span><span class="an">제1조 논의</span>회칙에 관한 모든 논의의 결정은 회장과 총무의 조율하에 전체 인원의 투표로 하고, 1/2 이상의 찬성이 있을 경우에만 집행한다.</div>
+      <div class="ar hit" id="r-7-1"><span class="tagx">통과 기준 · 안건 4</span><span class="an">제1조 논의</span>회칙에 관한 모든 논의의 결정은 회장과 총무의 조율하에 전체 인원의 투표로 하고, 1/2 이상의 찬성이 있을 경우에만 집행한다.</div>
       <div class="ar"><span class="an">제2조 해산</span>본회의 해산은 회원 1/2 이상의 찬성으로 하며 재산청산은 본회의 의결을 통해 행한다.</div>
       <div class="ar"><span class="an">제3조 기타</span>본 회칙에 명시되지 않은 사항은 일반 관례에 따르며 이견이 있으면 회장과 총무의 조율하에 동기회 의견을 취합하여 시행한다.</div>
     </div>
@@ -530,28 +669,48 @@
 
 
   <div id="tab-calc" class="pane" hidden>
-    <div class="rintro">분기마다 몇 명 올지 <b>슬라이더로 바꿔보세요.</b> 1년 뒤 남는 돈이 바로 계산돼요.<br>(지원금은 개정안 기준: 최소 20만 / 10명 초과시 1인당 2만)</div>
+    <div class="rintro">환급금·생일비·참석 인원을 바꾸면 <b>1년 뒤 통장</b>이 바로 계산돼요.<br>(지원금은 개정안 기준: 최소 20만 / 10명 초과시 1인당 2만)</div>
 
     <div class="kres" id="kres">
-      <div class="krl">1년 뒤 남는 돈</div>
+      <div class="krl">1년 운영하고 남는 돈</div>
       <div class="krv num" id="krv">+29만</div>
       <div class="krs" id="krs">흑자 👍</div>
     </div>
 
+    <div class="kbank">
+      <div class="kbr"><span>지금 통장 <small>12월 모임비 19만 뺀 뒤</small></span><b class="num">377만</b></div>
+      <div class="kbr m"><span>환급 <small id="kbRefT">10만 × 19명</small></span><b class="num" id="kbRef">−190만</b></div>
+      <div class="kbr"><span>환급 후 통장</span><b class="num" id="kbAfter">187만</b></div>
+      <div class="kbr p"><span>+ 1년 운영 결과</span><b class="num" id="kbOp">+29만</b></div>
+      <div class="kbr end"><span>1년 뒤 통장</span><b class="num" id="kbEnd">216만</b></div>
+    </div>
+
     <div class="kchart">
+      <div class="kcl">📊 모임에 쓸 돈, 분기마다 이렇게 줄어요</div>
       <div class="kbars" id="kbars"></div>
     </div>
 
-    <div class="kpre">
-      <button data-p="8">저조 8명</button><button data-p="13">보통 13명</button>
-      <button data-p="16">많이 16명</button><button data-p="19">전원 19명</button>
+    <div class="kgrp">
+      <div class="kgl">💸 환급금 <small>이번 1회</small></div>
+      <div class="segs" id="kref"><button data-v="0">환급 없음</button><button data-v="10" class="on">1인당 10만원</button><button data-v="15">1인당 15만원</button></div>
     </div>
 
-    <div class="kab"><button data-b="5" class="on">A안 · 생일비 5만</button><button data-b="3">B안 · 생일비 3만</button></div>
-    <div class="kqs" id="kqs"></div>
+    <div class="kgrp">
+      <div class="kgl">🎂 생일비</div>
+      <div class="kab"><button data-b="5" class="on">5만원 (인상)</button><button data-b="3">3만원 (현행)</button></div>
+    </div>
 
-    <div class="kev">
-      <div class="kevt"><b>경조사</b> (결혼·사망, 건당 30만)<small>제6장 제1조 · 그해 몇 건?</small></div>
+    <div class="kgrp">
+      <div class="kgl">👥 분기별 참석 인원 <small>슬라이더로 조절</small></div>
+      <div class="kpre">
+        <button data-p="8">저조 8명</button><button data-p="13">보통 13명</button>
+        <button data-p="16">많이 16명</button><button data-p="19">전원 19명</button>
+      </div>
+      <div class="kqs" id="kqs"></div>
+    </div>
+
+    <div class="kgrp kev">
+      <div class="kevt"><b>🕊️ 경조사</b> (결혼·사망, 건당 30만)<small>제6장 제1조 · 그해 몇 건?</small></div>
       <div class="kstep"><button id="evm" aria-label="경조사 줄이기">−</button><span class="num" id="evn">0</span><button id="evp" aria-label="경조사 늘리기">+</button></div>
     </div>
 
@@ -628,7 +787,8 @@ document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=
 // ===== 계산기 =====
 (function(){
   let BASE=133; const EV=30;
-  let q=[13,13,13,13], ev=0, shown=133, playing=false;
+  let q=[13,13,13,13], ev=0, shown=133, playing=false, REF=10;
+  const BANK=376.6193; // 3,956,193 − 12월 모임비 190,000
   const sup=n=>n<=0?0:(n<=10?20:n*2);
   const fmt=v=>(v<0?'−':'')+Math.abs(v);
   const qsEl=document.getElementById('kqs');
@@ -675,11 +835,18 @@ document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=
     document.getElementById('kres').classList.toggle('neg',neg);
     document.getElementById('krs').textContent=neg?`적자 ⚠️ ${Math.abs(end)}만원 모자라요 (쌓인 회비에서 메움)`:(end===0?'딱 본전':'흑자 👍 다음 해로 넘어가요');
     countTo(end);
+    const after=BANK-19*REF, fin=after+end, r=v=>Math.round(v);
+    document.getElementById('kbRefT').textContent=REF?`${REF}만 × 19명`:'없음';
+    document.getElementById('kbRef').textContent=REF?`−${19*REF}만`:'0';
+    document.getElementById('kbAfter').textContent=r(after)+'만';
+    document.getElementById('kbOp').textContent=(end>=0?'+':'−')+Math.abs(end)+'만';
+    const ke=document.getElementById('kbEnd'); ke.textContent=fmt(r(fin))+'만'; ke.classList.toggle('neg',fin<0);
     const used=steps.reduce((a,t)=>a+t.s,0);
     document.getElementById('kfoot').innerHTML=`회비 228만 − 생일비 ${228-BASE}만${ev?` − 경조사 ${ev}건 ${ev*EV}만`:''} = 시작 <b>${start}만</b><br>모임지원 합계 <b>${used}만</b> → 1년 뒤 <b>${fmt(end)}만</b>`;
   }
   document.querySelectorAll('.kpre button').forEach(b=>b.addEventListener('click',()=>{const n=+b.dataset.p;q=[n,n,n,n];calc();}));
   document.querySelectorAll('.kab button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.kab button').forEach(x=>x.classList.toggle('on',x===b));BASE=228-19*(+b.dataset.b);calc();}));
+  document.querySelectorAll('#kref button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#kref button').forEach(x=>x.classList.toggle('on',x===b));REF=+b.dataset.v;calc();}));
   document.getElementById('evm').addEventListener('click',()=>{if(ev>0){ev--;document.getElementById('evn').textContent=ev;calc();}});
   document.getElementById('evp').addEventListener('click',()=>{if(ev<9){ev++;document.getElementById('evn').textContent=ev;calc();}});
   document.getElementById('kplay').addEventListener('click',e=>{
@@ -693,6 +860,39 @@ document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=
   let inited=false;
   document.querySelector('.tab[data-tab=calc]').addEventListener('click',()=>{requestAnimationFrame(()=>{calc();inited=true;});});
   window.addEventListener('resize',()=>{if(!document.getElementById('tab-calc').hidden) calc();});
+})();
+
+// ===== 20년 시뮬레이션 (10만원 환급) =====
+(function(){
+  const EV=[0.237, 0.258, 0.28, 0.306, 0.337, 0.371, 0.411, 0.45, 0.494, 0.539, 0.589, 0.646, 0.712, 0.797, 0.895, 1.0, 1.106, 1.209, 1.314, 1.414]; // 생명표 기반 연도별 예상 부모님 조사 건수
+  const sup=n=>n<=10?20:n*2, START=376.6193-190;
+  let N=13;
+  const fmt=v=>(v<0?'−':'')+Math.abs(Math.round(v));
+  const box=document.getElementById('s20b');
+  box.innerHTML='<div class="kzero" id="s20z"></div>'+Array.from({length:21},(_,i)=>`<div class="kcol"><div class="kbar${i?'':' start'}" id="s20b${i}"></div><div class="kval" id="s20v${i}"></div></div>`).join('');
+  function series(start){let b=start;const out=[b];let cum=0;const cums=[0];
+    for(let y=0;y<20;y++){cum+=EV[y];b+=228-95-4*sup(N)-(y<5?30:0)-30*EV[y];out.push(b);cums.push(cum);}return {out,cums};}
+  function draw(){
+    const {out,cums}=series(START), alt=series(START-95).out;
+    const maxV=Math.max(260,...out), minV=Math.min(0,...out);
+    const H=box.clientHeight-34, sc=H/(maxV-minV), zero=16+maxV*sc;
+    document.getElementById('s20z').style.top=zero+'px';
+    out.forEach((x,i)=>{const bar=document.getElementById('s20b'+i), l=document.getElementById('s20v'+i);
+      const top=x>=0?zero-x*sc:zero, h=Math.max(2,Math.abs(x)*sc);
+      bar.style.top=top+'px';bar.style.height=h+'px';if(i) bar.classList.toggle('neg',x<0);
+      l.textContent=(i%5===0)?fmt(x):'';l.classList.toggle('neg',x<0);l.style.top=(x>=0?top-16:top+h+1)+'px';});
+    const e=document.getElementById('s20E');e.textContent='20년 뒤 '+fmt(out[20])+'만';e.className='num '+(out[20]<0?'neg':'pos');
+    const RNG={5:[0,4],10:[1,7],15:[4,11],20:[9,18]}; // 생명표 기반 90% 범위
+    document.getElementById('s20t').innerHTML=[5,10,15,20].map(y=>{const hi=out[y]-(RNG[y][1]-cums[y])*30;
+      return `<tr><td>${y}년 뒤</td><td>약 ${cums[y].toFixed(1)}건<small>${RNG[y][0]}~${RNG[y][1]}건</small></td><td class="bal${out[y]<0?' neg':''}">${fmt(out[y])}만</td><td class="bal wc${hi<0?' neg':''}">${fmt(hi)}만<small>${RNG[y][1]}건일 때</small></td></tr>`;}).join('');
+    const low=Math.min(...out), ly=out.indexOf(low), neg=out.findIndex(x=>x<0), aneg=alt.findIndex(x=>x<0);
+    const V=document.getElementById('s20V');
+    if(neg<0){V.innerHTML=`20년 동안 <b>한 번도 바닥나지 않아요.</b> 가장 적을 때도 <b>${fmt(low)}만</b>(${ly}년차).<br>`+(aneg>0?`15만원 환급이었다면 <b>${aneg}년차에 바닥</b>나요.`:`15만원 환급이었다면 가장 적을 때 <b>${fmt(Math.min(...alt))}만</b>까지 내려가요.`);V.classList.remove('warn');}
+    else{V.innerHTML=`⚠️ 분기 평균 ${N===19?'19':N}명이 계속 오면 <b>${neg}년차에 바닥나요.</b><br>이렇게 참석이 늘면 그때 지원금·회비를 다시 의논하면 돼요.`;V.classList.add('warn');}
+  }
+  document.querySelectorAll('#s20N button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#s20N button').forEach(x=>x.classList.toggle('on',x===b));N=+b.dataset.v;draw();}));
+  draw(); window.addEventListener('resize',draw);
+  document.querySelector('.tab[data-tab=agenda]').addEventListener('click',()=>requestAnimationFrame(draw));
 })();
 </script>
 </body>
