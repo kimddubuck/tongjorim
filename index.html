@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>통조림 동기모임 2026 개선안건</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F6F4; --card:#FFFFFF;
+    --ink:#16303D; --muted:#5E7882; --faint:#9AADB4;
+    --green:#17996F; --green-soft:#DDF3EA; --green-ink:#0E6B4D;
+    --red:#E1543E; --red-soft:#FBE3DD;
+    --gold:#DFA12B; --gold-soft:#FBEFD3; --gold-ink:#8a600f;
+    --navy:#1C4761; --navy-soft:#E3ECF2;
+    --line:#E8EDEB;
+    --shadow:0 8px 24px -12px rgba(22,48,61,.18);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;
+    font-family:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty;}
+  h1,h2,.verdict .tx,.why span,.lede,.kd,.box .s,.fr .ft,.opt li{text-wrap:balance;}
+  .num{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;font-variant-numeric:tabular-nums;letter-spacing:.3px;}
+  .wrap{max-width:640px;margin:0 auto;padding:26px 16px 60px;}
+
+  /* header */
+  h1{font-size:clamp(26px,7vw,34px);font-weight:900;margin:0 0 4px;letter-spacing:-.5px;}
+  .lede{font-size:14px;color:var(--muted);margin:0 0 18px;}
+  .lede b{color:var(--gold-ink);background:var(--gold-soft);padding:2px 8px;border-radius:6px;font-weight:800;}
+
+  /* overview list */
+  .overview{background:var(--navy);color:#fff;border-radius:18px;padding:16px 18px;margin-bottom:20px;box-shadow:var(--shadow);}
+  .overview .t{font-size:12px;font-weight:700;opacity:.7;margin-bottom:10px;letter-spacing:.5px;}
+  .overview ol{margin:0;padding:0;list-style:none;display:grid;gap:8px;}
+  .overview li{display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;}
+  .overview li .n{flex:0 0 24px;height:24px;border-radius:7px;background:var(--gold);color:#3a2905;
+    font-family:'Black Han Sans',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;}
+
+  /* agenda card */
+  .card{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:20px 18px;margin-bottom:16px;}
+  .head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .head .n{flex:0 0 38px;height:38px;border-radius:11px;background:var(--gold);color:#fff;
+    font-family:'Black Han Sans',sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center;}
+  .head h2{margin:0;font-size:19px;font-weight:800;line-height:1.2;}
+
+  /* before → after */
+  .change{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;}
+  .box{border-radius:14px;padding:13px 10px;text-align:center;}
+  .box.before{background:#F1F5F3;}
+  .box.after{background:var(--green-soft);}
+  .box .k{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px;letter-spacing:.3px;}
+  .box.after .k{color:var(--green-ink);}
+  .box .v{font-size:24px;line-height:1.15;}
+  .box.before .v{color:var(--faint);}
+  .box.after .v{color:var(--green);}
+  .box .v.small{font-size:16px;}
+  .box .s{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;}
+  .arrow{font-family:'Black Han Sans',sans-serif;font-size:22px;color:var(--faint);}
+
+  /* one-line why */
+  .why{display:flex;gap:9px;align-items:flex-start;margin-top:14px;font-size:14px;color:var(--ink);}
+  .why .ic{flex:0 0 auto;font-size:16px;line-height:1.5;}
+  .why b{font-weight:800;}
+
+  /* simple formula */
+  .formula{margin-top:16px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:4px;
+    background:#F7F9F8;border-radius:14px;padding:14px 10px;}
+  .f{text-align:center;}
+  .f .fv{font-size:20px;line-height:1.1;}
+  .f .fk{font-size:11px;color:var(--muted);font-weight:700;margin-top:3px;}
+  .f .fc{font-size:10.5px;color:var(--faint);font-weight:600;margin-top:4px;line-height:1.4;}
+  .formula{align-items:start;}
+  .fop{align-self:start;margin-top:2px;}
+  .f.in .fv{color:var(--gold);} .f.out .fv{color:var(--navy);} .f.res .fv{color:var(--green);}
+  .fop{font-family:'Black Han Sans',sans-serif;font-size:18px;color:var(--faint);text-align:center;}
+
+  /* verdict */
+  .verdict{margin-top:12px;display:flex;align-items:center;gap:14px;background:var(--green-soft);border-radius:14px;padding:13px 16px;}
+  .verdict .big{font-family:'Black Han Sans',sans-serif;font-size:26px;color:var(--green);line-height:1;white-space:nowrap;}
+  .verdict .tx{font-size:13.5px;color:var(--green-ink);font-weight:600;line-height:1.5;}
+  .verdict .tx b{font-weight:800;}
+  .verdict{flex-direction:column;align-items:stretch;gap:10px;}
+  .verdict .big{text-align:center;}
+  .verdict .tx{display:grid;gap:6px;}
+  .verdict .ln{background:rgba(255,255,255,.6);border-radius:9px;padding:8px 11px;font-size:13.5px;}
+  .verdict .ln.sub{font-size:12.5px;font-weight:500;}
+  .sc{border:1.5px solid var(--line);border-left:5px solid var(--green);border-radius:14px;padding:13px 14px;margin-bottom:12px;background:#fff;}
+  .sc.neg{border-left-color:var(--red);background:#FFF8F6;}
+  .sh{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .st{font-size:15px;font-weight:800;}
+  .sb{font-size:15px;padding:3px 11px;border-radius:999px;background:var(--green-soft);color:var(--green-ink);white-space:nowrap;}
+  .sc.neg .sb{background:var(--red-soft);color:var(--red);}
+  .so{font-size:12.5px;color:var(--muted);margin:3px 0 10px;}
+  .so b{color:var(--red);}
+  .sr{display:grid;grid-template-columns:repeat(5,1fr);position:relative;}
+  .sr::before{content:"";position:absolute;left:10%;right:10%;top:13px;height:2px;background:var(--line);}
+  .sx{text-align:center;position:relative;}
+  .sx .sv{display:inline-block;background:#fff;padding:0 4px;font-size:16px;color:var(--ink);line-height:1.6;}
+  .sc.neg .sx .sv{background:#FFF8F6;}
+  .sx:last-child .sv{color:var(--green);}
+  .sx.neg .sv{color:var(--red);}
+  .sx .sl{font-size:10.5px;color:var(--faint);font-weight:600;}
+  .tb{width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px;text-align:center;font-variant-numeric:tabular-nums;}
+  .tb th{font-size:11.5px;color:var(--muted);font-weight:700;padding:6px 2px;border-bottom:1.5px solid var(--line);}
+  .tb td{padding:7px 2px;border-bottom:1px solid var(--line);font-weight:600;}
+  .tb tr:last-child td{border-bottom:none;}
+  .tb tr:last-child td.bal{font-weight:900;}
+  .tb tr:last-child td.bal span{display:inline-block;background:var(--green);color:#fff;font-size:15px;
+    padding:3px 10px;border-radius:999px;box-shadow:0 2px 6px rgba(23,153,111,.35);white-space:nowrap;}
+  .tb tr:last-child td.bal.neg span{background:var(--red);box-shadow:0 2px 6px rgba(225,84,62,.35);}
+  .tb tr:last-child td.bal small{display:block;font-size:10px;color:var(--muted);font-weight:700;margin-top:3px;white-space:nowrap;}
+  .tb td:first-child{color:var(--muted);}
+  .tb td.use{color:var(--red);font-weight:800;}
+  .tb td.bal{color:var(--green-ink);font-weight:800;}
+  .tb td.bal.neg{color:var(--red);}
+  .law{display:inline-block;font-size:11.5px;font-weight:700;color:var(--navy);background:var(--navy-soft);
+    padding:3px 10px;border-radius:999px;margin:-6px 0 14px;}
+  .caution{margin-top:14px;background:var(--gold-soft);border-radius:14px;padding:13px 15px;display:grid;gap:7px;}
+  .caution .cth{font-size:14px;font-weight:800;color:#6b4e12;}
+  .caution .ctx{font-size:13px;color:#6b4e12;line-height:1.6;background:rgba(255,255,255,.55);border-radius:9px;padding:8px 11px;}
+  .caution .ctx b{color:#3a2905;}
+  .kakao .kd b{opacity:1;}
+  .tabs{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--bg);padding:8px 0 12px;}
+  .tab{border:none;border-radius:12px;padding:12px 8px;font-family:inherit;font-size:14.5px;font-weight:800;cursor:pointer;
+    background:#fff;color:var(--muted);box-shadow:0 2px 8px -4px rgba(22,48,61,.2);}
+  .tab.on{background:var(--navy);color:#fff;}
+  .tab:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+  a.law{cursor:pointer;text-decoration:none;}
+  .rintro{font-size:13.5px;color:var(--muted);margin:4px 0 14px;}
+  .rintro b{color:var(--ink);}
+  .rmap{display:grid;gap:12px;}
+  .rm{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:15px 15px;}
+  .rm.vote{background:var(--navy-soft);box-shadow:none;}
+  .rmh{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;flex-wrap:wrap;}
+  .rn{flex:0 0 26px;height:26px;border-radius:8px;background:var(--gold);color:#fff;font-family:'Black Han Sans',sans-serif;
+    font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .rgo{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--navy);background:var(--navy-soft);padding:3px 10px;border-radius:999px;cursor:pointer;white-space:nowrap;}
+  .rm.vote .rgo{background:#fff;}
+  .rcmp{display:grid;gap:6px;margin-top:10px;}
+  .ro,.rnw{font-size:13.5px;border-radius:10px;padding:9px 11px;line-height:1.55;}
+  .ro{background:#F1F5F3;color:var(--muted);}
+  .rnw{background:var(--green-soft);color:var(--green-ink);}
+  .ro span,.rnw span{display:inline-block;font-size:11px;font-weight:800;margin-right:7px;padding:1px 7px;border-radius:5px;background:#fff;}
+  .ro b{color:var(--ink);} .rnw b{font-weight:900;}
+  .rtx{font-size:13.5px;margin-top:8px;} .rtx b{font-weight:900;}
+  .rh{font-size:17px;font-weight:900;margin:28px 0 12px;}
+  .ch{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:6px 15px 10px;margin-bottom:12px;}
+  .cht{font-size:14.5px;font-weight:900;color:var(--navy);padding:10px 0 8px;border-bottom:1.5px solid var(--line);}
+  .ar{font-size:13.5px;padding:10px 0;border-bottom:1px solid var(--line);line-height:1.65;scroll-margin-top:80px;}
+  .ar:last-child{border-bottom:none;}
+  .an{display:block;font-weight:800;font-size:13px;color:var(--ink);margin-bottom:2px;}
+  .hang{margin-top:6px;padding-left:4px;color:var(--ink);scroll-margin-top:80px;}
+  .hit{background:var(--gold-soft);border-radius:10px;padding:10px 11px;border-bottom:none;margin:6px -4px;}
+  .hang.hit{margin:8px 0 2px;}
+  .rel{}
+  .tagx{display:inline-block;font-size:11px;font-weight:800;background:var(--gold);color:#3a2905;padding:2px 9px;border-radius:999px;margin-bottom:5px;margin-right:6px;}
+  .tagx.soft{background:var(--navy-soft);color:var(--navy);}
+  .flash{animation:flash 1.4s ease;}
+  @keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--gold);}100%{box-shadow:0 0 0 0 transparent;}}
+  @media(prefers-reduced-motion:reduce){.flash{animation:none;}}
+  .rulebox{margin-top:14px;border:1.5px solid var(--navy-soft);border-radius:14px;padding:12px 13px;display:grid;gap:6px;background:#FAFCFD;}
+  .rbh{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:800;color:var(--navy);}
+  .rbl{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;}
+  .rbr{font-size:13px;border-radius:9px;padding:8px 10px;line-height:1.55;}
+  .rbr span{display:inline-block;font-size:10.5px;font-weight:800;padding:1px 7px;border-radius:5px;margin-right:7px;background:#fff;}
+  .rbr.cur{background:#F1F5F3;color:var(--muted);} .rbr.cur b{color:var(--ink);}
+  .rbr.new{background:var(--green-soft);color:var(--green-ink);} .rbr.new b{font-weight:900;}
+  .tabs{grid-template-columns:repeat(3,1fr);}
+  .tab{font-size:13.5px;padding:12px 4px;white-space:nowrap;}
+  .kres{background:var(--green);color:#fff;border-radius:20px;padding:20px;text-align:center;box-shadow:var(--shadow);transition:background .35s;}
+  .kres.neg{background:var(--red);}
+  .krl{font-size:13px;font-weight:700;opacity:.85;}
+  .krv{font-size:52px;line-height:1.1;margin:4px 0;}
+  .krs{font-size:13.5px;font-weight:700;opacity:.95;}
+  .kchart{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:16px 12px 10px;margin-top:14px;}
+  .kbars{position:relative;height:200px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .kcol{position:relative;height:100%;}
+  .kbar{position:absolute;left:12%;right:12%;border-radius:8px;transition:top .5s cubic-bezier(.3,1.3,.5,1),height .5s cubic-bezier(.3,1.3,.5,1),background .3s,box-shadow .3s;background:var(--green);}
+  .kbar.neg{background:var(--red);}
+  .kbar.start{background:var(--navy);}
+  .kbar.on{box-shadow:0 0 0 3px var(--gold);}
+  .kval{position:absolute;left:0;right:0;text-align:center;font-family:'Black Han Sans',sans-serif;font-size:14px;transition:top .5s cubic-bezier(.3,1.3,.5,1);color:var(--ink);}
+  .kval.neg{color:var(--red);}
+  .kzero{position:absolute;left:0;right:0;height:2px;background:var(--ink);opacity:.25;transition:top .5s;}
+  .klab{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:6px;}
+  .klab div{text-align:center;font-size:11.5px;color:var(--muted);font-weight:700;}
+  .kpre{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0 10px;}
+  .kpre button{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 2px;font-family:inherit;font-size:12.5px;font-weight:800;color:var(--navy);cursor:pointer;white-space:nowrap;}
+  .kpre button:active{transform:translateY(1px);}
+  .kqs{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .kq{background:#fff;border-radius:14px;padding:12px 13px;box-shadow:0 4px 14px -10px rgba(22,48,61,.3);transition:box-shadow .3s;}
+  .kq.on{box-shadow:0 0 0 3px var(--gold);}
+  .kqh{display:flex;justify-content:space-between;align-items:baseline;}
+  .kqn{font-size:13px;font-weight:800;color:var(--navy);}
+  .kqp{font-size:12px;color:var(--muted);font-weight:700;}
+  .kqp b{font-family:'Black Han Sans',sans-serif;font-size:22px;color:var(--ink);font-weight:400;}
+  .kq input{width:100%;margin:8px 0 4px;accent-color:var(--green);height:28px;}
+  .kqs2{font-size:12px;color:var(--muted);}
+  .kqs2 b{color:var(--red);}
+  .kev{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:12px 14px;margin-top:10px;box-shadow:0 4px 14px -10px rgba(22,48,61,.3);}
+  .kevt{flex:1;font-size:13.5px;}
+  .kevt small{display:block;font-size:11.5px;color:var(--faint);}
+  .kstep{display:flex;align-items:center;gap:6px;}
+  .kstep button{width:38px;height:38px;border-radius:10px;border:none;background:var(--navy-soft);color:var(--navy);font-size:20px;font-weight:900;cursor:pointer;}
+  .kstep span{min-width:28px;text-align:center;font-size:22px;}
+  .kplay{margin-top:12px;}
+  .kplay button{width:100%;border:none;background:var(--navy);color:#fff;font-family:inherit;font-weight:800;font-size:14.5px;padding:13px;border-radius:12px;cursor:pointer;}
+  .kplay button:disabled{opacity:.6;}
+  .ktab{background:#fff;border-radius:14px;margin-top:14px;box-shadow:0 4px 14px -10px rgba(22,48,61,.3);overflow:hidden;}
+  .ktab tr.on td{background:var(--gold-soft);}
+  .ktab td{transition:background .3s;}
+  .kfoot{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.7;text-align:center;}
+  .kfoot b{color:var(--ink);}
+  details.sc>summary{list-style:none;cursor:pointer;}
+  details.sc>summary::-webkit-details-marker{display:none;}
+  .sh .chev{color:var(--faint);font-size:13px;transition:transform .2s;margin-left:2px;}
+  details.sc[open] .chev{transform:rotate(180deg);}
+  .sh .sb{margin-left:auto;}
+  .abx{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+  @media(max-width:560px){.abx{grid-template-columns:1fr;}}
+  .abc{border:2px solid var(--line);border-radius:16px;padding:14px;}
+  .abc.a{border-color:#BFE5D5;} .abc.b{border-color:#F2D8A0;}
+  .abh{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;margin-bottom:8px;}
+  .abt{font-family:'Black Han Sans',sans-serif;font-size:15px;color:#fff;background:var(--green);padding:3px 10px;border-radius:8px;}
+  .abc.b .abt{background:var(--gold);}
+  .abr{display:grid;grid-template-columns:84px 1fr;align-items:baseline;gap:6px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;}
+  .abr span{color:var(--muted);font-size:12px;font-weight:700;}
+  .abr b{font-weight:800;}
+  .abr small{grid-column:2;font-size:11px;color:var(--faint);margin-top:-4px;}
+  .abr.hl b{color:var(--green-ink);}
+  .abp{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:4px;}
+  .abp li{font-size:12.5px;padding-left:16px;position:relative;}
+  .abp li::before{position:absolute;left:0;font-weight:900;}
+  .abp li.g::before{content:"+";color:var(--green);} .abp li.b::before{content:"−";color:var(--red);}
+  .kab{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+  .kab button{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 4px;font-family:inherit;font-size:13px;font-weight:800;color:var(--muted);cursor:pointer;white-space:nowrap;}
+  .kab button.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .h1s{display:block;font-size:clamp(15px,4.2vw,19px);font-weight:800;color:var(--muted);letter-spacing:-.2px;margin-bottom:4px;}
+  .crow{margin-bottom:16px;}
+  .qs{grid-column:1 / 4;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:2px;}
+  .qc{background:#F7F9F8;border-radius:8px;padding:6px 4px;text-align:center;}
+  .qc .qn{font-size:10.5px;color:var(--muted);font-weight:700;white-space:nowrap;}
+  .qc .qm{font-size:12px;color:var(--red);font-weight:800;margin-top:1px;}
+  .qc .ql{font-size:12px;color:var(--green-ink);font-weight:800;}
+  .qc .ql.neg{color:var(--red);}
+  .ctip{font-size:12px;color:var(--muted);background:#F7F9F8;border-radius:9px;padding:9px 11px;margin-bottom:12px;line-height:1.6;}
+  .ctip b{color:var(--ink);}
+  .ctip .r{color:var(--red);font-weight:800;} .ctip .g{color:var(--green-ink);font-weight:800;}
+
+  /* chart */
+  .chart{margin-top:16px;}
+  .chart .ct{font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:10px;}
+  .crow{display:grid;grid-template-columns:58px 1fr 62px;align-items:center;gap:10px;margin-bottom:8px;}
+  .crow .cn{font-size:14px;font-weight:800;text-align:right;}
+  .crow .cn small{display:block;font-size:10.5px;color:var(--faint);font-weight:600;line-height:1.2;}
+  .cwrap{height:20px;background:#F0F4F2;border-radius:6px;overflow:hidden;}
+  .cbar{height:100%;border-radius:6px;}
+  .cbar.pos{background:var(--green);} .cbar.neg{background:var(--red);}
+  .cval{font-family:'Black Han Sans',sans-serif;font-size:15px;text-align:right;}
+  .cval.pos{color:var(--green);} .cval.neg{color:var(--red);}
+  .ckey{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);font-weight:600;margin-top:6px;}
+
+  /* option A/B */
+  .ab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;}
+  @media(max-width:420px){.ab{grid-template-columns:1fr;}}
+  .opt{border:2px solid var(--line);border-radius:14px;padding:13px 12px;}
+  .opt .oh{font-size:15px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .opt ul{margin:0;padding:0;list-style:none;display:grid;gap:5px;}
+  .opt li{font-size:12.5px;display:flex;gap:5px;line-height:1.4;}
+  .opt li .pm{flex:0 0 12px;font-weight:800;font-family:'Black Han Sans',sans-serif;}
+  .opt li.g .pm{color:var(--green);} .opt li.b .pm{color:var(--red);}
+
+  /* refund flow */
+  .flow{display:grid;gap:7px;margin-top:4px;}
+  .fr{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;background:#F7F9F8;}
+  .fr.minus{background:var(--red-soft);} .fr.keep{background:var(--green-soft);}
+  .fr .ic{font-size:18px;flex:0 0 auto;}
+  .fr .ft{flex:1;font-size:13.5px;font-weight:700;}
+  .fr .ft small{display:block;font-size:11px;color:var(--muted);font-weight:500;}
+  .fr .fv{font-size:19px;color:var(--navy);white-space:nowrap;}
+  .fr.minus .fv{color:var(--red);} .fr.keep .fv{color:var(--green);}
+
+  /* kakao */
+  .kakao{background:#FEE500;border-radius:18px;padding:18px;margin-top:22px;color:#191919;box-shadow:var(--shadow);}
+  .kakao .kt{font-size:16px;font-weight:900;margin-bottom:4px;}
+  .kakao .kd{font-size:13px;opacity:.75;margin-bottom:12px;}
+  .kakao .q{background:#fff;border-radius:12px;padding:13px 14px;font-size:13.5px;line-height:1.8;white-space:pre-line;color:var(--ink);}
+  .kbtn{margin-top:12px;width:100%;border:none;background:#191919;color:#FEE500;font-family:inherit;font-weight:800;
+    font-size:15px;padding:14px;border-radius:12px;cursor:pointer;}
+  .kbtn:active{transform:translateY(1px);}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);
+    color:#fff;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:700;transition:.25s;pointer-events:none;z-index:9;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .foot{font-size:11.5px;color:var(--faint);text-align:center;margin-top:18px;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1><span class="h1s">부산교통공사 공사11기 통조림 동기모임</span>2026년 개선안건</h1>
+  <p class="lede">아래 <b>3가지</b>를 카톡 투표로 정해요. 읽어보고 단톡방 투표에 참여해주세요.</p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-tab="agenda" role="tab">🗳️ 투표 안건</button>
+    <button class="tab" data-tab="rules" role="tab">📖 관련 회칙</button>
+    <button class="tab" data-tab="calc" role="tab">🧮 파산계산기</button>
+  </div>
+
+  <div id="tab-agenda" class="pane">
+  <div class="overview">
+    <div class="t">투표 안건</div>
+    <ol>
+      <li><span class="n">1</span>생일비 · 환급: A안 vs B안</li>
+      <li><span class="n">2</span>분기모임 지원금 인상</li>
+      <li><span class="n">3</span>생일비, 생일 때 vs 연말에</li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section class="card">
+    <div class="head"><div class="n">1</div><h2>생일비 · 쌓인 회비 환급</h2></div>
+    <a class="law" data-go="r-6-1-4">📖 제6장 제1조 4항 · 제7장 제1조 ›</a>
+    <div class="why" style="margin-top:0"><span class="ic">🗳️</span><span>통장에 쌓인 돈(<b>426만</b>, 10/29 기준)을 어떻게 쓸지 <b>둘 중 하나</b>를 골라요.</span></div>
+
+    <div class="abx">
+      <div class="abc a">
+        <div class="abh"><span class="abt">A안</span>생일 더 챙기기</div>
+        <div class="abr"><span>생일비</span><b>3만 → 5만원</b></div>
+        <div class="abr"><span>환급</span><b>1인당 10만원</b><small>19명 × 10만 = 190만</small></div>
+        <div class="abr"><span>환급 후 통장</span><b>236만</b><small>4,256,193 − 1,900,000<br>= 2,356,193원</small></div>
+        <div class="abr"><span>연간 잉여금</span><b>133만</b><small>회비 228만 − 생일비 95만(19명×5만)</small></div>
+        <div class="abr hl"><span>분기 모임</span><b>평균 16명까지 흑자</b></div>
+        <ul class="abp"><li class="g">못 오는 친구도 생일은 확실히 챙김</li><li class="g">비상금이 넉넉하게 남음</li><li class="b">지금 돌려받는 돈은 적음</li></ul>
+      </div>
+      <div class="abc b">
+        <div class="abh"><span class="abt">B안</span>지금 많이 돌려받기</div>
+        <div class="abr"><span>생일비</span><b>3만원 유지</b></div>
+        <div class="abr"><span>환급</span><b>1인당 20만원</b><small>19명 × 20만 = 380만</small></div>
+        <div class="abr"><span>환급 후 통장</span><b>46만</b><small>4,256,193 − 3,800,000<br>= 456,193원</small></div>
+        <div class="abr"><span>연간 잉여금</span><b>171만</b><small>회비 228만 − 생일비 57만(19명×3만)</small></div>
+        <div class="abr hl"><span>분기 모임</span><b>전원 와도 +19만 흑자</b></div>
+        <ul class="abp"><li class="g">지금 바로 20만원씩 돌려받음</li><li class="g">매년 모임비 여유가 큼</li><li class="b">비상금이 46만으로 줄어듦</li></ul>
+      </div>
+    </div>
+
+    <div class="rulebox"><div class="rbh">📖 회칙 제6장 제1조 제4항 [생일]<a class="rbl" data-go="r-6-1-4">전문 보기 ›</a></div>
+      <div class="rbr cur"><span>현행</span>현금 <b>3만원</b> 또는 3만원 상당의 선물</div>
+      <div class="rbr new"><span>A안</span>현금 <b>5만원</b> 또는 5만원 상당의 선물로 개정</div>
+      <div class="rbr new"><span>B안</span>현행 <b>그대로 유지</b></div></div>
+    <div class="rulebox"><div class="rbh">📖 회칙 제7장 제1조 [논의]<a class="rbl" data-go="r-7-1">전문 보기 ›</a></div>
+      <div class="rbr cur"><span>현행</span>잉여금 환급 <b>규정 없음</b></div>
+      <div class="rbr new"><span>처리</span>회칙 개정 없이 <b>이번 1회만 환급</b>. 회칙에 없는 사항이라 전체 투표로 결정</div></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="card">
+    <div class="head"><div class="n">2</div><h2>분기모임 지원금 인상</h2></div>
+    <a class="law" data-go="r-5-3">📖 회칙 제5장 제3조 개정 ›</a>
+    <div class="change">
+      <div class="box before"><div class="k">지금</div><div class="v num small">1인당 1만원</div><div class="s">10명 오면 10만원</div></div>
+      <div class="arrow">→</div>
+      <div class="box after"><div class="k">바꾸면</div><div class="v num small">최소 20만원<br>10명 초과시<br>1인당 2만원</div><div class="s">5명 → 20만원<br>15명 → 30만원</div></div>
+    </div>
+    <div class="why"><span class="ic">💡</span><span>적게 모여도 <b>20만원은 보장</b>, 많이 모이면 <b>더 지원.</b> 참석할수록 이득인 구조.</span></div>
+    <div class="rulebox"><div class="rbh">📖 회칙 제5장 제3조 [모임비 지원]<a class="rbl" data-go="r-5-3">전문 보기 ›</a></div>
+      <div class="rbr cur"><span>현행</span>모임 참가자 <b>1인당 1만원</b>씩 지원한다.</div>
+      <div class="rbr new"><span>개정안</span>모임마다 <b>최소 20만원</b>을 지원하고, 참가자가 10명을 넘으면 <b>1인당 2만원</b>씩 지원한다.</div></div>
+
+    <div class="formula">
+      <div class="f in"><div class="fv num">228만</div><div class="fk">1년 회비</div><div class="fc">19명 × 1만원<br>× 12개월</div></div>
+      <div class="fop">−</div>
+      <div class="f out"><div class="fv num">95만</div><div class="fk">생일비</div><div class="fc">19명 × 5만원</div></div>
+      <div class="fop">=</div>
+      <div class="f res"><div class="fv num">133만</div><div class="fk">모임 쓸 돈</div><div class="fc">분기 4번에<br>나눠 씀</div></div>
+    </div>
+
+    <div class="verdict">
+      <div class="big">파산 X</div>
+      <div class="tx">
+        <div class="ln">133만 ÷ 4분기 = <b>분기당 약 33만원</b></div>
+        <div class="ln">33만 ÷ 2만원 = <b>평균 16명까지 흑자</b></div>
+        <div class="ln sub">전원 와도 19명 × 2만 × 4번 = 152만<br>133만 − 152만 = <b>−19만</b> → 쌓인 회비로 감당</div>
+        <div class="ln sub">※ 위 계산은 <b>A안(생일비 5만)</b> 기준.<br><b>B안(생일비 3만)</b>이면 228 − 57 = 171만 → 전원 와도 <b>+19만</b></div>
+      </div>
+    </div>
+    <div class="chart">
+      <div class="ct">📊 매 분기 몇 명 오느냐에 따라 1년 뒤 남는 돈 (A안 기준)</div>
+      <div class="ctip">모임 쓸 돈 <b>133만</b>에서 분기마다 지원금이 빠져나가요.<br><b>카드를 누르면</b> 분기별 계산표가 펼쳐져요.</div>
+      <div id="chart"></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="card">
+    <div class="head"><div class="n">3</div><h2>생일비, 언제 줄까?</h2></div>
+    <a class="law" data-go="r-6-1-4">📖 회칙 제6장 제1조 4항에 지급 시기 추가 ›</a>
+    <div class="ab">
+      <div class="opt">
+        <div class="oh">🎂 생일 달에 바로</div>
+        <ul>
+          <li class="g"><span class="pm">+</span>생일 느낌이 확실함</li>
+          <li class="g"><span class="pm">+</span>받는 사람 기분 좋음</li>
+          <li class="b"><span class="pm">−</span>총무가 매달 챙겨야 함</li>
+        </ul>
+      </div>
+      <div class="opt">
+        <div class="oh">🗓️ 연말에 한 번에</div>
+        <ul>
+          <li class="g"><span class="pm">+</span>총무 일이 1년에 1번</li>
+          <li class="g"><span class="pm">+</span>회계 정리가 깔끔함</li>
+          <li class="b"><span class="pm">−</span>생일 느낌이 약함</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rulebox"><div class="rbh">📖 회칙 제6장 제1조 제4항 [생일]<a class="rbl" data-go="r-6-1-4">전문 보기 ›</a></div>
+      <div class="rbr cur"><span>현행</span>지급 시기 <b>규정 없음</b></div>
+      <div class="rbr new"><span>추가안</span>① <b>생일이 있는 달</b>에 지급<br>② <b>12월 연말모임</b>(제5장 제4조)에 일괄 지급</div></div>
+  </section>
+
+  <!-- kakao -->
+  <div class="kakao">
+    <div class="kt">💬 최종 투표는 카톡으로!</div>
+    <div class="kd">회칙 제7장 제1조: <b>전체 19명 중 절반 이상(10명) 찬성</b>해야 통과돼요.<br>아래 버튼으로 복사해서 단톡방 투표에 붙여넣으세요.</div>
+    <div class="q" id="pollText">[통조림 동기모임 2026년 개선안건 투표]
+※ 회칙 제7장 제1조: 19명 중 10명 이상 찬성 시 통과
+
+1️⃣ 생일비 · 쌓인 회비 환급 (하나만 선택)
+   A안: 생일비 5만원 인상 + 1인당 10만원 환급
+   B안: 생일비 3만원 유지 + 1인당 20만원 환급
+   현행 유지
+
+2️⃣ 분기모임 지원금 인상
+   (최소 20만원, 10명 초과시 1인당 2만원)
+   찬성 / 반대
+
+3️⃣ 생일비 지급 시기
+   생일 달에 바로 / 연말에 한 번에</div>
+    <button class="kbtn" id="copyBtn">투표 문구 복사하기</button>
+  </div>
+
+  <p class="foot">회비 19명 × 월 1만원 기준 계산 · 생일비는 1년에 전원에게 돌아가므로 고정비로 계산</p>
+  </div>
+
+  <div id="tab-rules" class="pane" hidden>
+    <div class="rintro">이번 투표로 <b>바뀌는 회칙</b>을 안건별로 정리했어요. 아래엔 회칙 전문이 있어요.</div>
+
+    <div class="rmap">
+      <div class="rm">
+        <div class="rmh"><span class="rn">1</span>생일비 · 환급 A/B안<a class="rgo" data-go="r-6-1-4">제6장 제1조 4항</a></div>
+        <div class="rcmp"><div class="ro"><span>지금</span>생일비 현금 <b>3만원</b> · 잉여금 환급 규정 없음</div>
+        <div class="rnw"><span>A안</span>생일비 <b>5만원</b>으로 개정 + 이번에 <b>1인당 10만원</b> 환급</div>
+        <div class="rnw"><span>B안</span>생일비 <b>3만원 유지</b> + 이번에 <b>1인당 20만원</b> 환급</div>
+        <div class="rtx" style="font-size:12.5px;color:var(--muted)">환급은 회칙에 없는 사항 → 제7장 제1조에 따라 투표로 1회 집행</div></div>
+      </div>
+      <div class="rm">
+        <div class="rmh"><span class="rn">2</span>분기모임 지원금 인상<a class="rgo" data-go="r-5-3">제5장 제3조</a></div>
+        <div class="rcmp"><div class="ro"><span>지금</span>모임 참가자 <b>1인당 1만원</b>씩 지원한다.</div>
+        <div class="rnw"><span>바뀌면</span>모임마다 <b>최소 20만원</b>을 지원하고, 참가자가 10명을 넘으면 <b>1인당 2만원</b>씩 지원한다.</div></div>
+      </div>
+      <div class="rm">
+        <div class="rmh"><span class="rn">3</span>생일비 지급 시기<a class="rgo" data-go="r-6-1-4">제6장 제1조 4항</a></div>
+        <div class="rcmp"><div class="ro"><span>지금</span>지급 시기 <b>규정 없음</b></div>
+        <div class="rnw"><span>추가</span>① <b>생일이 있는 달</b>에 지급 &nbsp;또는&nbsp; ② <b>12월 연말모임</b>에 일괄 지급 (제5장 제4조와 연계)</div></div>
+      </div>
+      <div class="rm vote">
+        <div class="rmh"><span class="rn">✔</span>통과 기준<a class="rgo" data-go="r-7-1">제7장 제1조</a></div>
+        <div class="rtx">전체 인원 투표로 <b>1/2 이상 찬성</b>해야 집행 → 19명 중 <b>10명 이상 찬성</b>.</div>
+      </div>
+    </div>
+
+    <h3 class="rh">회칙 전문</h3>
+
+    <div class="ch"><div class="cht">제1장 총칙</div>
+      <div class="ar"><span class="an">제1조 목적</span>부산교통공사 11기 통신직 19명의 친목도모와 상부상조를 목적으로 한다.</div>
+      <div class="ar"><span class="an">제2조 명칭</span>부통령(부산교통공사 통신직 영원하라)</div>
+      <div class="ar"><span class="an">제3조 의무</span>본 회의 회원은 회칙을 준수하며, 회원 모두의 의견을 존중한다.</div>
+    </div>
+
+    <div class="ch"><div class="cht">제2장 회원</div>
+      <div class="ar"><span class="an">제1조 초기회원</span>부산교통공사 11기 통신직 동기 19명</div>
+      <div class="ar"><span class="an">제2조 의무</span>회원은 본 회가 정한 회비를 납부하며 모임에 자유롭게 참석한다.</div>
+      <div class="ar"><span class="an">제3조 가입</span>제2장 제1조의 자격을 갖춘 자에 한해서 가입 가능하며, 회비 최초 1회 납부 시에 그 자격을 갖는다.</div>
+      <div class="ar"><span class="an">제4조 탈퇴</span>회원 탈퇴는 개인 자유의사에 맡기며, 부득이하게 탈퇴 시에도 회비의 분할 지급 금액은 없다. 단, 회비를 3개월 이상 납부하지 않는 경우 강제 탈퇴 조치되며, 재가입은 미지급된 회비를 납부해야 가능하다.</div>
+    </div>
+
+    <div class="ch"><div class="cht">제3장 조직구성</div>
+      <div class="ar"><span class="an">제1조 구성</span>본 모임은 원활한 운영을 위해 회장과 총무를 임명한다. 나머지 회원은 평회원으로 한다.</div>
+      <div class="ar"><span class="an">제2조 역할</span>
+        <div class="hang">① 회장은 운영을 총괄한다.</div>
+        <div class="hang">② [임원 선출] 초대 회장은 지원자 중 다수결로 정하며, 지원자가 없으면 의견을 조율하여 정한다. 총무는 회장이 임명한다. 다음 임원 선출은 12월에 하며 현재 임원의 지명으로 한다. (모두 임원을 경험하는 것이 원칙이며, 특별한 사유 없이 거절 불가)</div>
+        <div class="hang">③ [회장] 모임을 주최하고, 경조사를 챙기고, 공지사항을 전달한다.</div>
+        <div class="hang">④ [총무] 회비징수 공지, 미납자 통보, 회비관리를 한다.</div>
+        <div class="hang">⑤ [임기] 특별한 사유가 없는 한 1년 단위로 한다.</div>
+      </div>
+    </div>
+
+    <div class="ch"><div class="cht">제4장 회비</div>
+      <div class="ar"><span class="an">제1조 납부</span>모든 회원은 회칙에 의하여 회비를 납부할 의무를 가진다.</div>
+      <div class="ar"><span class="an">제2조 금액</span>회비는 월 1만원으로 한다.</div>
+      <div class="ar"><span class="an">제3조 납기</span>매월 20일을 납기로 정하고, 고유통장을 두고 관리한다. 총무 변경 시 잔액을 다음 총무가 개설한 통장으로 이월하여 관리한다.</div>
+      <div class="ar"><span class="an">제4조 미납</span>회비를 정당한 이유 없이 3회 이상 미납하였을 경우 강제 탈퇴 조치됨. 해당 납기월이 지났을 경우 벌금 1만원을 추가 징수한다.</div>
+    </div>
+
+    <div class="ch"><div class="cht">제5장 모임</div>
+      <div class="ar"><span class="an">제1조 모임일</span>회장은 분기에 1번 정기모임 날짜를 정한다.</div>
+      <div class="ar"><span class="an">제2조 장소</span>회장이 장소를 지정한다.</div>
+      <div class="ar hit" id="r-5-3"><span class="tagx">안건 2</span><span class="an">제3조 모임비 지원</span>모임 참가자 1인당 1만원씩 지원한다.</div>
+      <div class="ar rel"><span class="tagx soft">안건 3 관련</span><span class="an">제4조 연말모임</span>4분기 정기모임은 12월이며, 해당년도 결산을 보고하고 다음 임원을 선출한다.</div>
+      <div class="ar"><span class="an">제5조 기타</span>모임 간 회원은 서로 소외되지 않도록 배려한다.</div>
+    </div>
+
+    <div class="ch"><div class="cht">제6장 경조사</div>
+      <div class="ar rel"><span class="tagx soft">경조사비 계산 근거</span><span class="an">제1조 범위</span>결혼(회원, 회원의 자식), 사망(회원, 회원의 부모, 회원의 배우자, 회원의 자식), 생일(회원)
+        <div class="hang">① [회원의 결혼] 현금 30만원 지원 (개인축의금 별도). 단, 미혼을 선언할 경우 만 40세에 지급한다. (만 41세 이상은 첫째 고등학교 입학 시 지급)</div>
+        <div class="hang">② [회원 자식의 결혼] 현금 30만원 지원 (개인축의금 별도)</div>
+        <div class="hang">③ [사망] 현금 30만원 지원 (개인부의금 별도)</div>
+        <div class="hang hit" id="r-6-1-4"><span class="tagx">안건 1·3</span>④ [생일] 현금 3만원 또는 3만원 상당의 선물 (회장이 생일자의 의견을 듣고 현금 또는 선물을 준다.)</div>
+      </div>
+    </div>
+
+    <div class="ch"><div class="cht">제7장 기타</div>
+      <div class="ar hit" id="r-7-1"><span class="tagx">통과 기준 · 안건 1 환급</span><span class="an">제1조 논의</span>회칙에 관한 모든 논의의 결정은 회장과 총무의 조율하에 전체 인원의 투표로 하고, 1/2 이상의 찬성이 있을 경우에만 집행한다.</div>
+      <div class="ar"><span class="an">제2조 해산</span>본회의 해산은 회원 1/2 이상의 찬성으로 하며 재산청산은 본회의 의결을 통해 행한다.</div>
+      <div class="ar"><span class="an">제3조 기타</span>본 회칙에 명시되지 않은 사항은 일반 관례에 따르며 이견이 있으면 회장과 총무의 조율하에 동기회 의견을 취합하여 시행한다.</div>
+    </div>
+  </div>
+
+
+  <div id="tab-calc" class="pane" hidden>
+    <div class="rintro">분기마다 몇 명 올지 <b>슬라이더로 바꿔보세요.</b> 1년 뒤 남는 돈이 바로 계산돼요.<br>(지원금은 개정안 기준: 최소 20만 / 10명 초과시 1인당 2만)</div>
+
+    <div class="kres" id="kres">
+      <div class="krl">1년 뒤 남는 돈</div>
+      <div class="krv num" id="krv">+29만</div>
+      <div class="krs" id="krs">흑자 👍</div>
+    </div>
+
+    <div class="kchart">
+      <div class="kbars" id="kbars"></div>
+    </div>
+
+    <div class="kpre">
+      <button data-p="8">저조 8명</button><button data-p="13">보통 13명</button>
+      <button data-p="16">많이 16명</button><button data-p="19">전원 19명</button>
+    </div>
+
+    <div class="kab"><button data-b="5" class="on">A안 · 생일비 5만</button><button data-b="3">B안 · 생일비 3만</button></div>
+    <div class="kqs" id="kqs"></div>
+
+    <div class="kev">
+      <div class="kevt"><b>경조사</b> (결혼·사망, 건당 30만)<small>제6장 제1조 · 그해 몇 건?</small></div>
+      <div class="kstep"><button id="evm" aria-label="경조사 줄이기">−</button><span class="num" id="evn">0</span><button id="evp" aria-label="경조사 늘리기">+</button></div>
+    </div>
+
+    <div class="kplay"><button id="kplay">▶ 분기 순서대로 보기</button></div>
+
+    <table class="tb ktab">
+      <thead><tr><th>분기</th><th>참석</th><th>잔고</th><th>사용</th><th>잔액</th></tr></thead>
+      <tbody id="ktb"></tbody>
+    </table>
+    <div class="kfoot" id="kfoot"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+const data=[
+  {t:'매번 10명 이하',q:[10,10,10,10]},
+  {t:'매번 13명',q:[13,13,13,13]},
+  {t:'매번 16명',q:[16,16,16,16]},
+  {t:'매번 19명 (전원)',q:[19,19,19,19]},
+  {t:'들쭉날쭉 (8·15·12·18명)',q:[8,15,12,18]},
+];
+const sup=n=>n<=10?20:n*2; // 만원
+data.forEach(d=>{
+  let left=133; d.steps=d.q.map(n=>{const s=sup(n);left-=s;return {n,s,left};});
+  d.bal=left;
+});
+const chart=document.getElementById('chart');
+const fmt=v=>(v<0?'−':'')+Math.abs(v);
+data.forEach(d=>{
+  const pos=d.bal>=0;
+  const same=d.q.every(n=>n===d.q[0]);
+  const outTxt=same?`분기마다 <b>${d.steps[0].s}만원씩</b> 빠짐`
+                   :`분기마다 <b>${d.steps.map(t=>t.s).join(' · ')}만</b> 빠짐`;
+  const el=document.createElement('details');
+  el.className='sc '+(pos?'pos':'neg');
+  let prev=133;
+  const rows=d.steps.map((t,i)=>{const r=`<tr><td>${i+1}분기</td><td>${t.n}명</td><td>${prev}만</td><td class="use">−${t.s}만</td><td class="bal${t.left<0?' neg':''}">${i===3?`<span>${fmt(t.left)}만</span><small>${t.left<0?'연말 모자란 돈':'연말 남는 돈'}</small>`:`${fmt(t.left)}만`}</td></tr>`;prev=t.left;return r;}).join('');
+  el.innerHTML=`
+    <summary class="sh"><span class="st">${d.t} 오면</span>
+      <span class="sb num">${pos?'+':'−'}${Math.abs(d.bal)}만</span><span class="chev">▾</span></summary>
+    <table class="tb">
+      <thead><tr><th>분기</th><th>참석</th><th>잔고</th><th>사용</th><th>잔액</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+  chart.appendChild(el);
+});
+
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1800);}
+document.getElementById('copyBtn').addEventListener('click',()=>{
+  const txt=document.getElementById('pollText').textContent;
+  const ok=()=>toast('복사됐어요 📋 카톡에 붙여넣기');
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(()=>fb(txt,ok));}
+  else fb(txt,ok);
+});
+function fb(txt,cb){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');cb();}catch(e){toast('복사 실패 — 길게 눌러 선택해주세요');}document.body.removeChild(ta);}
+
+// tabs
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>{const on=t.dataset.tab===name;t.classList.toggle('on',on);t.setAttribute('aria-selected',on);});
+  document.querySelectorAll('.pane').forEach(p=>p.hidden=p.id!=='tab-'+name);
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{showTab(t.dataset.tab);window.scrollTo({top:0});}));
+document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>{
+  showTab('rules');
+  const el=document.getElementById(a.dataset.go); if(!el) return;
+  requestAnimationFrame(()=>{el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');});
+}));
+
+// ===== 계산기 =====
+(function(){
+  let BASE=133; const EV=30;
+  let q=[13,13,13,13], ev=0, shown=133, playing=false;
+  const sup=n=>n<=0?0:(n<=10?20:n*2);
+  const fmt=v=>(v<0?'−':'')+Math.abs(v);
+  const qsEl=document.getElementById('kqs');
+  q.forEach((n,i)=>{
+    const d=document.createElement('div');d.className='kq';d.id='kq'+i;
+    d.innerHTML=`<div class="kqh"><span class="kqn">${i+1}분기</span><span class="kqp"><b id="kqv${i}">${n}</b>명</span></div>
+      <input type="range" min="0" max="19" value="${n}" id="kqr${i}" aria-label="${i+1}분기 참석 인원">
+      <div class="kqs2">지원금 <b id="kqs${i}"></b></div>`;
+    qsEl.appendChild(d);
+    d.querySelector('input').addEventListener('input',e=>{q[i]=+e.target.value;calc();});
+  });
+  const bars=document.getElementById('kbars');
+  bars.innerHTML='<div class="kzero" id="kzero"></div>'+[0,1,2,3,4].map(i=>`<div class="kcol"><div class="kbar${i?'':' start'}" id="kb${i}"></div><div class="kval" id="kv${i}"></div></div>`).join('');
+  bars.insertAdjacentHTML('afterend','<div class="klab"><div>시작</div><div>1분기</div><div>2분기</div><div>3분기</div><div>4분기</div></div>');
+
+  function countTo(target){
+    const from=shown, t0=performance.now(), dur=500;
+    const el=document.getElementById('krv');
+    function step(t){const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+      const v=Math.round(from+(target-from)*e); el.textContent=(v>0?'+':'')+fmt(v)+'만';
+      if(k<1) requestAnimationFrame(step); else shown=target;}
+    requestAnimationFrame(step);
+  }
+  function calc(){
+    const start=BASE-ev*EV;
+    let left=start; const steps=q.map(n=>{const s=sup(n);const b=left;left-=s;return {n,s,b,left};});
+    const vals=[start,...steps.map(t=>t.left)];
+    const H=bars.clientHeight-42, maxV=Math.max(BASE,...vals), minV=Math.min(0,...vals);
+    const sc=H/(maxV-minV||1), zero=18+maxV*sc;
+    document.getElementById('kzero').style.top=zero+'px';
+    vals.forEach((v,i)=>{
+      const b=document.getElementById('kb'+i), l=document.getElementById('kv'+i);
+      const top=v>=0?zero-v*sc:zero, h=Math.max(3,Math.abs(v)*sc);
+      b.style.top=top+'px'; b.style.height=h+'px';
+      if(i) b.classList.toggle('neg',v<0);
+      l.textContent=fmt(v); l.classList.toggle('neg',v<0);
+      l.style.top=(v>=0?top-18:top+h+2)+'px';
+    });
+    steps.forEach((t,i)=>{document.getElementById('kqv'+i).textContent=t.n;
+      document.getElementById('kqs'+i).textContent='−'+t.s+'만'+(t.n>0&&t.n<=10?' (최소)':'');
+      document.getElementById('kqr'+i).value=t.n;});
+    document.getElementById('ktb').innerHTML=steps.map((t,i)=>`<tr id="kr${i}"><td>${i+1}분기</td><td>${t.n}명</td><td>${fmt(t.b)}만</td><td class="use">−${t.s}만</td><td class="bal${t.left<0?' neg':''}">${fmt(t.left)}만</td></tr>`).join('');
+    const end=left, neg=end<0;
+    document.getElementById('kres').classList.toggle('neg',neg);
+    document.getElementById('krs').textContent=neg?`적자 ⚠️ ${Math.abs(end)}만원 모자라요 (쌓인 회비에서 메움)`:(end===0?'딱 본전':'흑자 👍 다음 해로 넘어가요');
+    countTo(end);
+    const used=steps.reduce((a,t)=>a+t.s,0);
+    document.getElementById('kfoot').innerHTML=`회비 228만 − 생일비 ${228-BASE}만${ev?` − 경조사 ${ev}건 ${ev*EV}만`:''} = 시작 <b>${start}만</b><br>모임지원 합계 <b>${used}만</b> → 1년 뒤 <b>${fmt(end)}만</b>`;
+  }
+  document.querySelectorAll('.kpre button').forEach(b=>b.addEventListener('click',()=>{const n=+b.dataset.p;q=[n,n,n,n];calc();}));
+  document.querySelectorAll('.kab button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.kab button').forEach(x=>x.classList.toggle('on',x===b));BASE=228-19*(+b.dataset.b);calc();}));
+  document.getElementById('evm').addEventListener('click',()=>{if(ev>0){ev--;document.getElementById('evn').textContent=ev;calc();}});
+  document.getElementById('evp').addEventListener('click',()=>{if(ev<9){ev++;document.getElementById('evn').textContent=ev;calc();}});
+  document.getElementById('kplay').addEventListener('click',e=>{
+    if(playing) return; playing=true; e.target.disabled=true;
+    let i=0; const clear=()=>{document.querySelectorAll('.kq.on,.kbar.on,#ktb tr.on').forEach(x=>x.classList.remove('on'));};
+    (function tick(){clear(); if(i>3){playing=false;e.target.disabled=false;return;}
+      document.getElementById('kq'+i).classList.add('on');document.getElementById('kb'+(i+1)).classList.add('on');
+      const r=document.getElementById('kr'+i); if(r) r.classList.add('on');
+      i++; setTimeout(tick,900);})();
+  });
+  let inited=false;
+  document.querySelector('.tab[data-tab=calc]').addEventListener('click',()=>{requestAnimationFrame(()=>{calc();inited=true;});});
+  window.addEventListener('resize',()=>{if(!document.getElementById('tab-calc').hidden) calc();});
+})();
+</script>
+</body>
+</html>
