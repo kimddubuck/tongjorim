@@ -138,10 +138,33 @@ h1, h2 { margin: 0px; line-height: 1.25; }
 }
 [data-theme="dark"] .lazy-box { border-color: rgb(229, 83, 75); }
 .ph { display: inline-block; max-width: 100%; }
+@keyframes bomb-tick { 
+  0% { transform: rotate(-14deg); }
+  50% { transform: rotate(14deg); }
+}
 /* 공개 페이지: 아래 탭 없음 (앱의 여백 규칙 중 var()·env() 섞인 줄임말은 CSSOM 이 비워 버려서 여기서 다시 적는다) */
 .panels { padding: calc(12px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom)); }
 .agenda-sum { padding-bottom: 16px; }
 .agenda-frame { width: 100%; border: 0; height: calc(100dvh - 60px - env(safe-area-inset-top)); }
+/* 앱 카드 */
+.app-link { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+.app-link img { flex: none; width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 4px 14px rgba(0,0,0,.45); }
+.app-link span { display: grid; gap: 2px; min-width: 0; }
+.app-link b { font-size: 17px; }
+.app-link small { font-size: 12.5px; color: var(--muted); }
+.app-link em { font-style: normal; font-weight: 900; color: var(--brand); }
+/* 사용법 슬라이드쇼: 옆으로 밀면 한 장씩 착착 */
+.gs { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 0; border-radius: 14px; background: #111; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.gs::-webkit-scrollbar { display: none; }
+.gs-s { flex: 0 0 100%; margin: 0; scroll-snap-align: center; scroll-snap-stop: always; }
+.gs-s img { display: block; width: 100%; height: auto; }
+.guide-card .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.gs-n { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.gs-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.gs-b { width: 40px; height: 36px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--card); color: var(--ink); font-size: 22px; font-weight: 800; line-height: 1; }
+.gs-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+.gs-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+.gs-dots i.on { background: var(--brand); width: 16px; border-radius: 4px; }
 </style>
 </head>
 <body>
@@ -160,6 +183,19 @@ h1, h2 { margin: 0px; line-height: 1.25; }
     <div class="small"><span class="ph"><span class="muted">규정 없음</span> →</span> <b class="ok"><span class="ph">이번 1회 1인당 10만원</span></b></div><div class="small muted">💡 돌려주고도 경조사 여윳돈 187만원(30만원짜리 약 6건)은 남긴다</div></div></div><div class="vrow"><span class="vno">5</span><div class="grow"><span class="ph"><b>공지는 메일로도, 관리는 동기모임 앱으로</b></span> <span class="ph small muted">3장 2조 3항</span>
     <div class="small"><span class="ph"><span class="muted">카톡 단톡방 공지만</span> →</span> <b class="ok">카톡 + 회사 인터넷메일 공지, 모임·투표·회원 정보는 앱(통조림)에서</b></div><div class="small muted">💡 카톡 공지가 묻혀서 투표율이 낮다. <span class="ph">메일로 한 번 더 알리고,</span> 앱에서 안 찍은 사람까지 보이게 챙긴다</div></div></div></div>
       <p class="vote-how"><span class="ph">🗳️ 카톡 투표로 정한다 ·</span> <span class="ph"><b>19명 중 10명 이상 찬성</b>하면 통과</span> <span class="ph muted">(회칙 7장 1조)</span></p>
+    </section>
+    <section class="card app-card">
+      <a class="app-link" href="https://tongjorim.pages.dev/" target="_blank" rel="noopener">
+        <img src="icon-192.png" alt="" width="64" height="64">
+        <span><b>🥫 통조림 동기모임 앱</b><small>모임 날짜 투표 · 오늘 근무 · 내 역 열차 · 회칙 · 안건</small><em>tongjorim.pages.dev ›</em></span>
+      </a>
+      <p class="small muted" style="margin:6px 0 0">입장 비번은 단톡 공지에 있다. 홈 화면에 깔아 두면 앱처럼 바로 열린다.</p>
+    </section>
+    <section class="card guide-card">
+      <div class="row between"><h2 class="card-title" style="margin:0">📖 사용법</h2><b class="gs-n" aria-live="polite">1 / 14</b></div>
+      <p class="small muted" style="margin:2px 0 8px">옆으로 밀어서 한 장씩 넘겨라</p>
+      <div class="gs" tabindex="0" aria-label="통조림 사용법 그림"><figure class="gs-s"><img src="guide/00.jpg" alt="통조림 사용법 표지" loading="eager" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/01.jpg" alt="1단계: 들어오기" loading="eager" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/02.jpg" alt="2단계: 처음 왔으면 가입" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/03.jpg" alt="3단계: 폰에 앱처럼 깔기" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/04.jpg" alt="4단계: 홈: 오늘 근무 + 알림 + 열차" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/05.jpg" alt="5단계: 모임: 날짜 투표 찍기" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/06.jpg" alt="6단계: 안 찍은 놈 쪼으기" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/07.jpg" alt="7단계: 모임 잡자: 후보 날짜 올리기" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/08.jpg" alt="8단계: 잡힌 모임: 간다 / 몬 간다" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/09.jpg" alt="9단계: 회원: 내 조·근무지 고치기" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/10.jpg" alt="10단계: 대근·연차는 그날만" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/11.jpg" alt="11단계: 근무현황: 조별 근무표" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/12.jpg" alt="12단계: 다른 폰·브라우저에서 들어오기" loading="lazy" width="1080" height="2000"></figure><figure class="gs-s"><img src="guide/13.jpg" alt="13단계: 안건: 한 장 요약" loading="lazy" width="1080" height="2000"></figure></div>
+      <div class="gs-nav"><button class="gs-b" data-gs="-1" type="button" aria-label="이전 장">‹</button><span class="gs-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><button class="gs-b" data-gs="1" type="button" aria-label="다음 장">›</button></div>
     </section>
     <section class="card heart-card">
       <h2 class="card-title">💌 이번 개선안에 담은 마음</h2>
@@ -187,6 +223,16 @@ h1, h2 { margin: 0px; line-height: 1.25; }
   }
   document.addEventListener('click', function (e) { var b = e.target.closest('[data-view]'); if (b) show(b.dataset.view); });
   show(location.hash === '#src' ? 'src' : 'sum');
+  // 사용법 슬라이드쇼: 지금 몇 번째 장인지 숫자·점으로, ‹ › 로도 넘긴다
+  var gs = document.querySelector('.gs');
+  if (gs) {
+    var n = gs.children.length, num = document.querySelector('.gs-n'), dots = document.querySelectorAll('.gs-dots i');
+    var cur = function () { return Math.round(gs.scrollLeft / gs.clientWidth); };
+    var paint = function () { var i = cur(); num.textContent = (i + 1) + ' / ' + n; dots.forEach(function (d, k) { d.classList.toggle('on', k === i); }); };
+    gs.addEventListener('scroll', function () { clearTimeout(gs._t); gs._t = setTimeout(paint, 60); }, { passive: true });
+    document.addEventListener('click', function (e) { var b = e.target.closest('[data-gs]'); if (!b) return; var i = Math.max(0, Math.min(n - 1, cur() + Number(b.dataset.gs))); gs.scrollTo({ left: i * gs.clientWidth }); });
+    gs.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); var i = Math.max(0, Math.min(n - 1, cur() + (e.key === 'ArrowRight' ? 1 : -1))); gs.scrollTo({ left: i * gs.clientWidth }); } });
+  }
 </script>
 </body>
 </html>
