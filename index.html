@@ -669,25 +669,27 @@
 
 
   <div id="tab-calc" class="pane" hidden>
-    <div class="rintro">환급금·생일비·참석 인원을 바꾸면 <b>1년 뒤 통장</b>이 바로 계산돼요.<br>(지원금은 개정안 기준: 최소 20만 / 10명 초과시 1인당 2만)</div>
+    <div class="rintro">환급금·생일비·참석 인원·경조사를 바꾸면 <b>20년 동안 통장</b>이 어떻게 변하는지 바로 보여요.<br>(지원금은 개정안 기준: 최소 20만 / 10명 초과시 1인당 2만)</div>
 
     <div class="kres" id="kres">
-      <div class="krl">1년 운영하고 남는 돈</div>
-      <div class="krv num" id="krv">+29만</div>
-      <div class="krs" id="krs">흑자 👍</div>
+      <div class="krl">20년 뒤 통장</div>
+      <div class="krv num" id="krv">0만</div>
+      <div class="krs" id="krs"></div>
+    </div>
+
+    <div class="kchart">
+      <div class="kcl">📊 20년 동안 통장 잔액</div>
+      <div class="sbars s20" id="kbars"></div>
+      <div class="sblab s20l"><div>지금</div><div>5년</div><div>10년</div><div>15년</div><div>20년</div></div>
     </div>
 
     <div class="kbank">
       <div class="kbr"><span>지금 통장 <small>12월 모임비 19만 뺀 뒤</small></span><b class="num">377만</b></div>
       <div class="kbr m"><span>환급 <small id="kbRefT">10만 × 19명</small></span><b class="num" id="kbRef">−190만</b></div>
-      <div class="kbr"><span>환급 후 통장</span><b class="num" id="kbAfter">187만</b></div>
-      <div class="kbr p"><span>+ 1년 운영 결과</span><b class="num" id="kbOp">+29만</b></div>
-      <div class="kbr end"><span>1년 뒤 통장</span><b class="num" id="kbEnd">216만</b></div>
-    </div>
-
-    <div class="kchart">
-      <div class="kcl">📊 모임에 쓸 돈, 분기마다 이렇게 줄어요</div>
-      <div class="kbars" id="kbars"></div>
+      <div class="kbr"><span>환급 후 통장 <small>출발</small></span><b class="num" id="kbAfter">187만</b></div>
+      <div class="kbr p"><span>매년 운영 결과 <small>× 20년</small></span><b class="num" id="kbOp">+29만</b></div>
+      <div class="kbr m"><span>20년 경조사 <small id="kbEvT"></small></span><b class="num" id="kbEv"></b></div>
+      <div class="kbr end"><span>20년 뒤 통장</span><b class="num" id="kbEnd"></b></div>
     </div>
 
     <div class="kgrp">
@@ -701,7 +703,7 @@
     </div>
 
     <div class="kgrp">
-      <div class="kgl">👥 분기별 참석 인원 <small>슬라이더로 조절</small></div>
+      <div class="kgl">👥 분기별 참석 인원 <small>매년 이만큼 온다고 가정</small></div>
       <div class="kpre">
         <button data-p="8">저조 8명</button><button data-p="13">보통 13명</button>
         <button data-p="16">많이 16명</button><button data-p="19">전원 19명</button>
@@ -709,15 +711,16 @@
       <div class="kqs" id="kqs"></div>
     </div>
 
-    <div class="kgrp kev">
-      <div class="kevt"><b>🕊️ 경조사</b> (결혼·사망, 건당 30만)<small>제6장 제1조 · 그해 몇 건?</small></div>
-      <div class="kstep"><button id="evm" aria-label="경조사 줄이기">−</button><span class="num" id="evn">0</span><button id="evp" aria-label="경조사 늘리기">+</button></div>
+    <div class="kgrp">
+      <div class="kgl">🕊️ 경조사 <small>건당 30만 · 제6장 제1조</small></div>
+      <div class="segs" id="kevs"><button data-v="none">없음</button><button data-v="exp" class="on">예상대로</button><button data-v="hi">많이 생기면</button></div>
+      <div class="simtip">결혼 <b>5건</b>(앞으로 5년간 1년에 1건) + 부모님 조사(통계청 생명표 2024).<br><b>많이 생기면</b> = 10번 중 9번은 이보다 적게 생기는 수준</div>
     </div>
 
-    <div class="kplay"><button id="kplay">▶ 분기 순서대로 보기</button></div>
+    <div class="kplay"><button id="kplay">▶ 1년씩 넘겨보기</button></div>
 
     <table class="tb ktab">
-      <thead><tr><th>분기</th><th>참석</th><th>잔고</th><th>사용</th><th>잔액</th></tr></thead>
+      <thead><tr><th>시점</th><th>경조사<br><small>누적</small></th><th>그해 경조사</th><th>통장</th></tr></thead>
       <tbody id="ktb"></tbody>
     </table>
     <div class="kfoot" id="kfoot"></div>
@@ -784,13 +787,18 @@ document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=
   requestAnimationFrame(()=>{el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');});
 }));
 
-// ===== 계산기 =====
+// 생명표 기반 연도별 예상 부모님 조사 건수 (계산기·20년 시뮬레이션 공용)
+const PARENT_EV=[0.237, 0.258, 0.28, 0.306, 0.337, 0.371, 0.411, 0.45, 0.494, 0.539, 0.589, 0.646, 0.712, 0.797, 0.895, 1.0, 1.106, 1.209, 1.314, 1.414];
+
+// ===== 계산기 (20년) =====
 (function(){
-  let BASE=133; const EV=30;
-  let q=[13,13,13,13], ev=0, shown=133, playing=false, REF=10;
+  const HI=[0,4,7,11,18]; // 5년마다 부모님 조사 누적, 90% 범위 많은 쪽
+  let q=[13,13,13,13], B=5, REF=10, EVM='exp', shown=0, playing=false;
   const BANK=376.6193; // 3,956,193 − 12월 모임비 190,000
   const sup=n=>n<=0?0:(n<=10?20:n*2);
-  const fmt=v=>(v<0?'−':'')+Math.abs(v);
+  const fmt=v=>(v<0?'−':'')+Math.abs(Math.round(v));
+  const parents=y=>EVM==='none'?0:EVM==='exp'?PARENT_EV[y]:(HI[Math.floor(y/5)+1]-HI[Math.floor(y/5)])/5;
+  const weds=y=>EVM==='none'||y>=5?0:1;
   const qsEl=document.getElementById('kqs');
   q.forEach((n,i)=>{
     const d=document.createElement('div');d.className='kq';d.id='kq'+i;
@@ -801,70 +809,68 @@ document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=
     d.querySelector('input').addEventListener('input',e=>{q[i]=+e.target.value;calc();});
   });
   const bars=document.getElementById('kbars');
-  bars.innerHTML='<div class="kzero" id="kzero"></div>'+[0,1,2,3,4].map(i=>`<div class="kcol"><div class="kbar${i?'':' start'}" id="kb${i}"></div><div class="kval" id="kv${i}"></div></div>`).join('');
-  bars.insertAdjacentHTML('afterend','<div class="klab"><div>시작</div><div>1분기</div><div>2분기</div><div>3분기</div><div>4분기</div></div>');
+  bars.innerHTML='<div class="kzero" id="kzero"></div>'+Array.from({length:21},(_,i)=>`<div class="kcol"><div class="kbar${i?'':' start'}" id="kb${i}"></div><div class="kval" id="kv${i}"></div></div>`).join('');
 
   function countTo(target){
     const from=shown, t0=performance.now(), dur=500;
     const el=document.getElementById('krv');
     function step(t){const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
-      const v=Math.round(from+(target-from)*e); el.textContent=(v>0?'+':'')+fmt(v)+'만';
+      const v=Math.round(from+(target-from)*e); el.textContent=fmt(v)+'만';
       if(k<1) requestAnimationFrame(step); else shown=target;}
     requestAnimationFrame(step);
   }
   function calc(){
-    const start=BASE-ev*EV;
-    let left=start; const steps=q.map(n=>{const s=sup(n);const b=left;left-=s;return {n,s,b,left};});
-    const vals=[start,...steps.map(t=>t.left)];
-    const H=bars.clientHeight-42, maxV=Math.max(BASE,...vals), minV=Math.min(0,...vals);
-    const sc=H/(maxV-minV||1), zero=18+maxV*sc;
+    const used=q.reduce((a,n)=>a+sup(n),0), op=228-19*B-used, start=BANK-19*REF;
+    let b=start, cnt=0, evSum=0; const out=[start], cnts=[0], evs=[0];
+    for(let y=0;y<20;y++){const n=parents(y)+weds(y), c=30*n; cnt+=n; evSum+=c; b+=op-c; out.push(b); cnts.push(cnt); evs.push(c);}
+    const H=bars.clientHeight-34, maxV=Math.max(260,...out), minV=Math.min(0,...out);
+    const sc=H/(maxV-minV), zero=16+maxV*sc;
     document.getElementById('kzero').style.top=zero+'px';
-    vals.forEach((v,i)=>{
-      const b=document.getElementById('kb'+i), l=document.getElementById('kv'+i);
-      const top=v>=0?zero-v*sc:zero, h=Math.max(3,Math.abs(v)*sc);
-      b.style.top=top+'px'; b.style.height=h+'px';
-      if(i) b.classList.toggle('neg',v<0);
-      l.textContent=fmt(v); l.classList.toggle('neg',v<0);
-      l.style.top=(v>=0?top-18:top+h+2)+'px';
+    out.forEach((v,i)=>{
+      const bar=document.getElementById('kb'+i), l=document.getElementById('kv'+i);
+      const top=v>=0?zero-v*sc:zero, h=Math.max(2,Math.abs(v)*sc);
+      bar.style.top=top+'px'; bar.style.height=h+'px';
+      if(i) bar.classList.toggle('neg',v<0);
+      l.textContent=i%5===0?fmt(v):''; l.classList.toggle('neg',v<0);
+      l.style.top=(v>=0?top-16:top+h+1)+'px';
     });
-    steps.forEach((t,i)=>{document.getElementById('kqv'+i).textContent=t.n;
-      document.getElementById('kqs'+i).textContent='−'+t.s+'만'+(t.n>0&&t.n<=10?' (최소)':'');
-      document.getElementById('kqr'+i).value=t.n;});
-    document.getElementById('ktb').innerHTML=steps.map((t,i)=>`<tr id="kr${i}"><td>${i+1}분기</td><td>${t.n}명</td><td>${fmt(t.b)}만</td><td class="use">−${t.s}만</td><td class="bal${t.left<0?' neg':''}">${fmt(t.left)}만</td></tr>`).join('');
-    const end=left, neg=end<0;
-    document.getElementById('kres').classList.toggle('neg',neg);
-    document.getElementById('krs').textContent=neg?`적자 ⚠️ ${Math.abs(end)}만원 모자라요 (쌓인 회비에서 메움)`:(end===0?'딱 본전':'흑자 👍 다음 해로 넘어가요');
-    countTo(end);
-    const after=BANK-19*REF, fin=after+end, r=v=>Math.round(v);
+    q.forEach((n,i)=>{document.getElementById('kqv'+i).textContent=n;
+      document.getElementById('kqs'+i).textContent='−'+sup(n)+'만'+(n>0&&n<=10?' (최소)':'');
+      document.getElementById('kqr'+i).value=n;});
+    document.getElementById('ktb').innerHTML=[1,5,10,15,20].map(y=>`<tr id="kr${y}"><td>${y}년 뒤</td><td>${EVM==='none'?'0건':'약 '+cnts[y].toFixed(1)+'건'}</td><td class="use">${evs[y]?'−'+fmt(evs[y])+'만':'0'}</td><td class="bal${out[y]<0?' neg':''}">${fmt(out[y])}만</td></tr>`).join('');
+    const end=out[20], broke=out.findIndex(x=>x<0), low=Math.min(...out);
+    document.getElementById('kres').classList.toggle('neg',broke>=0);
+    document.getElementById('krs').textContent=broke>=0?`⚠️ ${broke}년차에 바닥나요`:`👍 20년 내내 버텨요 · 가장 적을 때 ${fmt(low)}만`;
+    countTo(Math.round(end));
     document.getElementById('kbRefT').textContent=REF?`${REF}만 × 19명`:'없음';
     document.getElementById('kbRef').textContent=REF?`−${19*REF}만`:'0';
-    document.getElementById('kbAfter').textContent=r(after)+'만';
-    document.getElementById('kbOp').textContent=(end>=0?'+':'−')+Math.abs(end)+'만';
-    const ke=document.getElementById('kbEnd'); ke.textContent=fmt(r(fin))+'만'; ke.classList.toggle('neg',fin<0);
-    const used=steps.reduce((a,t)=>a+t.s,0);
-    document.getElementById('kfoot').innerHTML=`회비 228만 − 생일비 ${228-BASE}만${ev?` − 경조사 ${ev}건 ${ev*EV}만`:''} = 시작 <b>${start}만</b><br>모임지원 합계 <b>${used}만</b> → 1년 뒤 <b>${fmt(end)}만</b>`;
+    document.getElementById('kbAfter').textContent=fmt(start)+'만';
+    const ko=document.getElementById('kbOp'); ko.textContent=(op>=0?'+':'−')+Math.abs(op)+'만'; ko.parentElement.className='kbr '+(op>=0?'p':'m');
+    document.getElementById('kbEvT').textContent=EVM==='none'?'없음':`약 ${cnt.toFixed(1)}건`;
+    document.getElementById('kbEv').textContent=evSum?'−'+fmt(evSum)+'만':'0';
+    const ke=document.getElementById('kbEnd'); ke.textContent=fmt(end)+'만'; ke.classList.toggle('neg',end<0);
+    document.getElementById('kfoot').innerHTML=`매년: 회비 228만 − 생일비 ${19*B}만 − 모임지원 ${used}만 = <b>${op>=0?'+':'−'}${Math.abs(op)}만</b><br>20년 뒤 = 출발 ${fmt(start)}만 ${op>=0?'+':'−'} ${Math.abs(op)}만 × 20년 − 경조사 ${fmt(evSum)}만 = <b>${fmt(end)}만</b>`;
   }
+  const pick=(sel,b)=>document.querySelectorAll(sel).forEach(x=>x.classList.toggle('on',x===b));
   document.querySelectorAll('.kpre button').forEach(b=>b.addEventListener('click',()=>{const n=+b.dataset.p;q=[n,n,n,n];calc();}));
-  document.querySelectorAll('.kab button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.kab button').forEach(x=>x.classList.toggle('on',x===b));BASE=228-19*(+b.dataset.b);calc();}));
-  document.querySelectorAll('#kref button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#kref button').forEach(x=>x.classList.toggle('on',x===b));REF=+b.dataset.v;calc();}));
-  document.getElementById('evm').addEventListener('click',()=>{if(ev>0){ev--;document.getElementById('evn').textContent=ev;calc();}});
-  document.getElementById('evp').addEventListener('click',()=>{if(ev<9){ev++;document.getElementById('evn').textContent=ev;calc();}});
+  document.querySelectorAll('.kab button').forEach(b=>b.addEventListener('click',()=>{pick('.kab button',b);B=+b.dataset.b;calc();}));
+  document.querySelectorAll('#kref button').forEach(b=>b.addEventListener('click',()=>{pick('#kref button',b);REF=+b.dataset.v;calc();}));
+  document.querySelectorAll('#kevs button').forEach(b=>b.addEventListener('click',()=>{pick('#kevs button',b);EVM=b.dataset.v;calc();}));
   document.getElementById('kplay').addEventListener('click',e=>{
     if(playing) return; playing=true; e.target.disabled=true;
-    let i=0; const clear=()=>{document.querySelectorAll('.kq.on,.kbar.on,#ktb tr.on').forEach(x=>x.classList.remove('on'));};
-    (function tick(){clear(); if(i>3){playing=false;e.target.disabled=false;return;}
-      document.getElementById('kq'+i).classList.add('on');document.getElementById('kb'+(i+1)).classList.add('on');
+    let i=0; const clear=()=>{document.querySelectorAll('#kbars .kbar.on,#ktb tr.on').forEach(x=>x.classList.remove('on'));};
+    (function tick(){clear(); if(i>20){playing=false;e.target.disabled=false;return;}
+      document.getElementById('kb'+i).classList.add('on');
       const r=document.getElementById('kr'+i); if(r) r.classList.add('on');
-      i++; setTimeout(tick,900);})();
+      i++; setTimeout(tick,300);})();
   });
-  let inited=false;
-  document.querySelector('.tab[data-tab=calc]').addEventListener('click',()=>{requestAnimationFrame(()=>{calc();inited=true;});});
+  document.querySelector('.tab[data-tab=calc]').addEventListener('click',()=>{requestAnimationFrame(calc);});
   window.addEventListener('resize',()=>{if(!document.getElementById('tab-calc').hidden) calc();});
 })();
 
 // ===== 20년 시뮬레이션 (10만원 환급) =====
 (function(){
-  const EV=[0.237, 0.258, 0.28, 0.306, 0.337, 0.371, 0.411, 0.45, 0.494, 0.539, 0.589, 0.646, 0.712, 0.797, 0.895, 1.0, 1.106, 1.209, 1.314, 1.414]; // 생명표 기반 연도별 예상 부모님 조사 건수
+  const EV=PARENT_EV;
   const sup=n=>n<=10?20:n*2, START=376.6193-190;
   let N=13;
   const fmt=v=>(v<0?'−':'')+Math.abs(Math.round(v));
